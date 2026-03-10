@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Government College of Engineering, Erode | GCEE (Formerly IRTT)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #0b1d35;
+      --deep: #071226;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-pale: #f5e9c8;
+      --white: #fafaf8;
+      --accent: #1a3a6b;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--deep); color: var(--white); overflow-x: hidden; }
+
+    /* NAVBAR */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(7,18,38,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      transition: padding 0.3s ease;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 1rem; }
+    .nav-emblem {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-weight: 700;
+      font-size: 1rem; color: var(--navy); letter-spacing: 0.5px;
+      box-shadow: 0 0 20px rgba(201,168,76,0.3); flex-shrink: 0;
+    }
+    .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; line-height: 1.2; }
+    .nav-name span { display: block; font-size: 0.7rem; font-weight: 400; color: var(--gold-light); letter-spacing: 1.5px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: rgba(250,250,248,0.7); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta { background: linear-gradient(135deg, var(--gold), #b8923c); color: var(--navy); font-size: 0.78rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 0.6rem 1.6rem; border-radius: 2px; text-decoration: none; }
+
+    /* ANNOUNCE */
+    .announce {
+      background: linear-gradient(90deg, var(--navy), #112040);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 0.6rem 4rem; display: flex; align-items: center; gap: 1.5rem;
+    }
+    .announce-badge { background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
+    .announce-text { font-size: 0.82rem; color: rgba(250,250,248,0.7); }
+
+    /* HERO */
+    .hero {
+      position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(26,58,107,0.5) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 40% at 20% 80%, rgba(201,168,76,0.07) 0%, transparent 60%),
+                  linear-gradient(160deg, rgba(7,18,38,0.8) 0%, rgba(11,29,53,0.9) 50%, #071226 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-orb {
+      position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,58,107,0.4) 0%, rgba(201,168,76,0.08) 50%, transparent 70%);
+      border: 1px solid rgba(201,168,76,0.12);
+      animation: orbPulse 6s ease-in-out infinite;
+    }
+    .hero-orb::before { content: ''; position: absolute; inset: 30px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.18); animation: orbPulse 6s ease-in-out infinite reverse; }
+    .hero-orb::after { content: ''; position: absolute; inset: 70px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.08); }
+    @keyframes orbPulse {
+      0%, 100% { transform: translateY(-50%) scale(1); opacity: 1; }
+      50% { transform: translateY(-50%) scale(1.05); opacity: 0.75; }
+    }
+    .hero-content { position: relative; z-index: 2; padding: 0 4rem; max-width: 680px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.6rem; animation: fadeUp 0.9s 0.1s ease both;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.4rem);
+      font-weight: 300; line-height: 1.07; margin-bottom: 0.5rem;
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+    .hero-title em {
+      font-style: italic; font-weight: 600;
+      background: linear-gradient(90deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-subtitle { font-size: 1rem; color: rgba(250,250,248,0.55); font-weight: 300; letter-spacing: 1px; margin-bottom: 2rem; animation: fadeUp 0.9s 0.3s ease both; }
+    .hero-desc { font-size: 1rem; line-height: 1.8; color: rgba(250,250,248,0.75); font-weight: 300; max-width: 540px; margin-bottom: 2.8rem; animation: fadeUp 0.9s 0.4s ease both; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.9s 0.5s ease both; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #b8923c); color: var(--navy); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; padding: 0.9rem 2.4rem; border-radius: 2px; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.3); transition: all 0.25s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.4); }
+    .btn-outline { border: 1px solid rgba(201,168,76,0.4); color: var(--gold-light); font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.9rem 2.4rem; border-radius: 2px; text-decoration: none; transition: all 0.25s; }
+    .btn-outline:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
+    .hero-stats {
+      position: absolute; bottom: 4rem; left: 4rem; right: 4rem; z-index: 2;
+      display: grid; grid-template-columns: repeat(4,1fr);
+      border-top: 1px solid rgba(201,168,76,0.15); padding-top: 2.5rem;
+      animation: fadeUp 0.9s 0.7s ease both;
+    }
+    .stat { padding: 0 2rem; border-right: 1px solid rgba(201,168,76,0.1); }
+    .stat:first-child { padding-left: 0; }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 600; line-height: 1; background: linear-gradient(90deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stat-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(250,250,248,0.4); margin-top: 0.4rem; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* STRIP */
+    .strip { background: var(--gold); padding: 1.1rem 4rem; display: flex; align-items: center; gap: 2.5rem; overflow-x: auto; }
+    .strip-item { display: flex; align-items: center; gap: 0.7rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+    .strip-dot { width: 5px; height: 5px; background: var(--navy); border-radius: 50%; flex-shrink: 0; }
+
+    /* SECTIONS */
+    section { padding: 6rem 4rem; }
+    .section-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.7rem; }
+    .section-tag::before { content: ''; display: block; width: 26px; height: 1px; background: var(--gold); }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.15; }
+    .section-title strong { font-weight: 700; }
+    .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent); }
+
+    /* ABOUT */
+    .about { background: var(--navy); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .about-text p { font-size: 0.98rem; line-height: 1.85; color: rgba(250,250,248,0.7); margin-bottom: 1.4rem; font-weight: 300; }
+    .about-card { background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(26,58,107,0.25)); border: 1px solid rgba(201,168,76,0.16); border-radius: 4px; padding: 2.5rem; }
+    .about-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--gold-light); margin-bottom: 1.2rem; }
+    .about-badge { display: inline-block; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.28); color: var(--gold-light); font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.3rem 0.85rem; border-radius: 20px; margin: 0.25rem 0.25rem 0.25rem 0; }
+    .about-info { margin-top: 1.8rem; }
+    .about-info-row { display: flex; gap: 0.6rem; align-items: flex-start; margin-bottom: 0.7rem; }
+    .about-info-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); min-width: 78px; padding-top: 2px; }
+    .about-info-val { font-size: 0.88rem; color: rgba(250,250,248,0.75); }
+
+    /* PROGRAMS */
+    .programs { background: var(--deep); }
+    .programs-header { max-width: 1200px; margin: 0 auto 3.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; }
+    .programs-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .prog-card { background: rgba(11,29,53,0.8); border: 1px solid rgba(201,168,76,0.08); padding: 1.8rem 2rem; position: relative; overflow: hidden; transition: all 0.3s ease; }
+    .prog-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+    .prog-card:hover::before { transform: scaleX(1); }
+    .prog-card:hover { background: rgba(26,58,107,0.35); border-color: rgba(201,168,76,0.2); transform: translateY(-3px); }
+    .prog-type { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
+    .prog-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; line-height: 1.3; margin-bottom: 0.5rem; }
+    .prog-intake { font-size: 0.78rem; color: rgba(250,250,248,0.4); }
+    .prog-icon { position: absolute; right: 1.5rem; top: 1.5rem; font-size: 1.2rem; opacity: 0.6; }
+
+    /* VISION MISSION */
+    .vision { background: var(--navy); }
+    .vision-inner { max-width: 1200px; margin: 3rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .vision-block { background: linear-gradient(135deg, rgba(201,168,76,0.05), rgba(11,29,53,0.5)); border: 1px solid rgba(201,168,76,0.15); border-radius: 4px; padding: 3rem; position: relative; overflow: hidden; }
+    .vision-block::after { content: '"'; position: absolute; right: 1rem; top: -1.5rem; font-family: 'Cormorant Garamond', serif; font-size: 10rem; font-weight: 700; color: rgba(201,168,76,0.04); line-height: 1; pointer-events: none; }
+    .vision-icon { font-size: 1.8rem; margin-bottom: 1.2rem; display: block; }
+    .vision-heading { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--gold-light); margin-bottom: 1.2rem; }
+    .vision-text { font-size: 0.96rem; line-height: 1.85; color: rgba(250,250,248,0.7); font-weight: 300; }
+
+    /* FACILITIES */
+    .facilities { background: var(--deep); }
+    .fac-grid { max-width: 1200px; margin: 3rem auto 0; display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+    .fac-card { border: 1px solid rgba(201,168,76,0.1); padding: 2rem 1.5rem; background: rgba(11,29,53,0.6); border-radius: 3px; text-align: center; transition: all 0.3s ease; }
+    .fac-card:hover { border-color: rgba(201,168,76,0.3); background: rgba(26,58,107,0.3); transform: translateY(-4px); }
+    .fac-emoji { font-size: 2rem; display: block; margin-bottom: 1rem; }
+    .fac-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .fac-desc { font-size: 0.8rem; color: rgba(250,250,248,0.48); line-height: 1.6; }
+
+    /* PRINCIPAL */
+    .principal-section { background: var(--navy); }
+    .principal-inner { max-width: 980px; margin: 3.5rem auto 0; display: grid; grid-template-columns: 280px 1fr; gap: 5rem; align-items: center; }
+    .principal-photo-frame { width: 100%; aspect-ratio: 3/4; background: linear-gradient(160deg, rgba(26,58,107,0.6), rgba(201,168,76,0.1)); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: rgba(201,168,76,0.3); }
+    .principal-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .principal-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .principal-role { font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .principal-msg { font-size: 1rem; line-height: 1.85; color: rgba(250,250,248,0.7); font-weight: 300; font-style: italic; border-left: 2px solid var(--gold); padding-left: 1.5rem; margin-bottom: 1.5rem; }
+    .principal-details { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .principal-det-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); }
+    .principal-det-val { font-size: 0.88rem; color: rgba(250,250,248,0.78); margin-top: 0.2rem; }
+
+    /* CONTACT */
+    .contact { background: var(--deep); }
+    .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+    .contact-row { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+    .contact-icon { width: 42px; height: 42px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .contact-detail-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+    .contact-detail-val { font-size: 0.9rem; color: rgba(250,250,248,0.72); line-height: 1.6; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+    .contact-link { display: flex; align-items: center; gap: 0.8rem; font-size: 0.84rem; color: rgba(250,250,248,0.6); text-decoration: none; padding: 0.7rem 1rem; border: 1px solid rgba(201,168,76,0.1); border-radius: 3px; background: rgba(11,29,53,0.5); transition: all 0.25s; }
+    .contact-link:hover { color: var(--gold-light); border-color: rgba(201,168,76,0.3); background: rgba(26,58,107,0.3); }
+    .contact-link-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-right: auto; }
+
+    /* FOOTER */
+    footer { background: #050d1a; border-top: 1px solid rgba(201,168,76,0.1); padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: rgba(250,250,248,0.35); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.7rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(250,250,248,0.3); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hero-content { padding: 0 1.5rem; }
+      .hero-orb { display: none; }
+      .hero-stats { left: 1.5rem; right: 1.5rem; grid-template-columns: repeat(2,1fr); gap: 1.5rem; bottom: 2rem; }
+      section { padding: 4rem 1.5rem; }
+      .about-inner, .vision-inner, .contact-inner, .principal-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .programs-grid { grid-template-columns: 1fr 1fr; }
+      .fac-grid { grid-template-columns: 1fr 1fr; }
+      .strip, .announce { padding: 1rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announce">
+    <span class="announce-badge">New 2025–26</span>
+    <span class="announce-text">🎓 CSE (Data Science) now available — 60 seats · Anna University Affiliated · AICTE Approved Institution · Erode, Tamil Nadu</span>
+  </div>
+
+  <nav id="navbar">
+    <div class="nav-brand">
+      <div class="nav-emblem">GCE</div>
+      <div class="nav-name">
+        Government College of Engineering
+        <span>Erode (IRTT) — Est. 1984</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#facilities">Campus</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#programs" class="nav-cta">Apply Now</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Formerly IRTT · Est. 1984 · Erode, Tamil Nadu</div>
+      <h1 class="hero-title">
+        Shaping <em>Engineers</em><br>of Tomorrow
+      </h1>
+      <p class="hero-subtitle">Government College of Engineering, Erode</p>
+      <p class="hero-desc">A premier government engineering institution affiliated to Anna University, Chennai — set on a sprawling 200-acre green campus, delivering four decades of technical excellence to students across Tamil Nadu.</p>
+      <div class="hero-actions">
+        <a href="#programs" class="btn-primary">Explore Programs</a>
+        <a href="#about" class="btn-outline">Discover GCEE</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">1984</div>
+        <div class="stat-label">Year Established</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">200</div>
+        <div class="stat-label">Acre Campus</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Programs Offered</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Years of Excellence</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="strip-item">✦ AICTE Approved</div><div class="strip-dot"></div>
+    <div class="strip-item">Anna University Affiliated</div><div class="strip-dot"></div>
+    <div class="strip-item">DoTE, Tamil Nadu</div><div class="strip-dot"></div>
+    <div class="strip-item">NIRF Ranked</div><div class="strip-dot"></div>
+    <div class="strip-item">Zone-XI Zonal HQ</div><div class="strip-dot"></div>
+    <div class="strip-item">200-Acre Green Campus</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-text reveal">
+        <div class="section-tag">About GCEE</div>
+        <h2 class="section-title" style="margin-bottom:1.8rem;">A Legacy of <strong>Academic Excellence</strong></h2>
+        <p>The Government College of Engineering, Erode (formerly IRTT) was established in 1984 under the Institute of Road Transport by the Tamil Nadu State Transport Corporation. On 26 August 2021, the Higher Education Minister of Tamil Nadu announced its transition under the Directorate of Technical Education (DoTE), renaming it as Government College of Engineering, Erode.</p>
+        <p>Located on a sprawling 200-acre lush green campus between Chithode and Bhavani in Erode district — just 15 km from Erode Railway Station — the institute provides a congenial atmosphere for technical education with excellent infrastructure, well-equipped laboratories, and highly qualified faculty.</p>
+        <p>The Institute serves as the Zonal Headquarters for Zone-XI (Erode Zone) of Anna University, monitoring engineering colleges across Erode, Namakkal, Tiruppur, and Salem districts.</p>
+      </div>
+      <div class="reveal">
+        <div class="about-card">
+          <div class="about-card-title">Institution Highlights</div>
+          <div>
+            <span class="about-badge">AICTE Approved</span>
+            <span class="about-badge">Anna University</span>
+            <span class="about-badge">DoTE Tamil Nadu</span>
+            <span class="about-badge">Zone-XI HQ</span>
+            <span class="about-badge">200 Acres</span>
+            <span class="about-badge">NIRF Ranked</span>
+          </div>
+          <div class="about-info">
+            <div class="about-info-row">
+              <span class="about-info-label">Principal</span>
+              <span class="about-info-val">Dr. A. Saradha, M.E., Ph.D.</span>
+            </div>
+            <div class="about-info-row">
+              <span class="about-info-label">Location</span>
+              <span class="about-info-val">Chithode–Bhavani Road, Erode – 638 316, Tamil Nadu</span>
+            </div>
+            <div class="about-info-row">
+              <span class="about-info-label">Phone</span>
+              <span class="about-info-val">+91 0424 2533579 | 9280091825</span>
+            </div>
+            <div class="about-info-row">
+              <span class="about-info-label">Email</span>
+              <span class="about-info-val">gceeprincipal@gmail.com</span>
+            </div>
+            <div class="about-info-row">
+              <span class="about-info-label">Affiliated</span>
+              <span class="about-info-val">Anna University, Chennai</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROGRAMS -->
+  <section class="programs" id="programs">
+    <div class="programs-header reveal">
+      <div>
+        <div class="section-tag">Academics</div>
+        <h2 class="section-title">Our <strong>Programs</strong></h2>
+      </div>
+      <a href="https://gcee.ac.in/admissionug.php" class="btn-outline">View Admissions →</a>
+    </div>
+    <div class="programs-grid">
+      <div class="prog-card reveal"><div class="prog-icon">🏗️</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Civil Engineering</div><div class="prog-intake">Intake: 24 students</div></div>
+      <div class="prog-card reveal"><div class="prog-icon">🚗</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Automobile Engineering</div><div class="prog-intake">Intake: 24 students</div></div>
+      <div class="prog-card reveal"><div class="prog-icon">⚙️</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Mechanical Engineering</div><div class="prog-intake">Est. 1984 · Core Branch</div></div>
+      <div class="prog-card reveal"><div class="prog-icon">⚡</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Electrical & Electronics Engineering</div><div class="prog-intake">Started 1994–95</div></div>
+      <div class="prog-card reveal"><div class="prog-icon">📡</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Electronics & Communication Engineering</div><div class="prog-intake">Started 1986–87</div></div>
+      <div class="prog-card reveal"><div class="prog-icon">💻</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Computer Science & Engineering</div><div class="prog-intake">Intake: 60 students</div></div>
+      <div class="prog-card reveal" style="background:rgba(201,168,76,0.05)"><div class="prog-icon">📊</div><div class="prog-type" style="color:var(--gold-light)">NEW · 2025–26 · B.E.</div><div class="prog-name">CSE (Data Science)</div><div class="prog-intake">Intake: 60 students</div></div>
+      <div class="prog-card reveal"><div class="prog-icon">🔌</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Information Technology</div><div class="prog-intake">Started 2002–03</div></div>
+      <div class="prog-card reveal" style="background:rgba(26,58,107,0.35)"><div class="prog-icon">🎓</div><div class="prog-type">PG · M.E.</div><div class="prog-name">Computer Science & Engineering</div><div class="prog-intake">Postgraduate Program</div></div>
+      <div class="prog-card reveal" style="background:rgba(26,58,107,0.35)"><div class="prog-icon">🏛️</div><div class="prog-type">PG · M.E.</div><div class="prog-name">Structural Engineering</div><div class="prog-intake">Intake: 30 students</div></div>
+      <div class="prog-card reveal" style="grid-column:span 2; background:rgba(201,168,76,0.03)"><div class="prog-icon">🔬</div><div class="prog-type">Department</div><div class="prog-name">Science & Humanities</div><div class="prog-intake">Foundation courses — Mathematics, Physics, Chemistry, Languages for all disciplines</div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VISION & MISSION -->
+  <section class="vision">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-tag reveal">Our Purpose</div>
+      <h2 class="section-title reveal">Vision & <strong>Mission</strong></h2>
+    </div>
+    <div class="vision-inner">
+      <div class="vision-block reveal">
+        <span class="vision-icon">🔭</span>
+        <div class="vision-heading">Our Vision</div>
+        <p class="vision-text">Providing the impetus in young minds through value-based quality education and imparting sound knowledge, intellectual skills, good character and innovative ideas to develop potential leadership, professional excellence, and enlightened services to the global society.</p>
+      </div>
+      <div class="vision-block reveal">
+        <span class="vision-icon">🎯</span>
+        <div class="vision-heading">Our Mission</div>
+        <p class="vision-text">Government College of Engineering, Erode is committed to providing quality engineering education, fostering research and development, evolving innovative applications of technology, encouraging entrepreneurship, and moulding students with professional responsibility, social awareness — setting them on the path to leadership for the betterment of our nation.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FACILITIES -->
+  <section class="facilities" id="facilities">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-tag reveal">Campus Life</div>
+      <h2 class="section-title reveal">World-Class <strong>Facilities</strong></h2>
+    </div>
+    <div class="fac-grid">
+      <div class="fac-card reveal"><span class="fac-emoji">📚</span><div class="fac-title">Library</div><div class="fac-desc">Books, journals, and digital resources for academic excellence.</div></div>
+      <div class="fac-card reveal"><span class="fac-emoji">🏠</span><div class="fac-title">Hostels</div><div class="fac-desc">PG, Boys & Girls hostels with Wi-Fi and dining facilities.</div></div>
+      <div class="fac-card reveal"><span class="fac-emoji">🏟️</span><div class="fac-title">Auditorium</div><div class="fac-desc">Spacious hall for seminars, cultural events and conferences.</div></div>
+      <div class="fac-card reveal"><span class="fac-emoji">⚽</span><div class="fac-title">Sports</div><div class="fac-desc">Grounds, indoor games and dedicated athletics facilities.</div></div>
+      <div class="fac-card reveal"><span class="fac-emoji">🔬</span><div class="fac-title">Laboratories</div><div class="fac-desc">State-of-the-art labs across all engineering departments.</div></div>
+      <div class="fac-card reveal"><span class="fac-emoji">🚌</span><div class="fac-title">Transport</div><div class="fac-desc">Transport connecting Erode city and surrounding areas.</div></div>
+      <div class="fac-card reveal"><span class="fac-emoji">🍽️</span><div class="fac-title">Cafeteria</div><div class="fac-desc">Hygienic and affordable dining for students and staff.</div></div>
+      <div class="fac-card reveal"><span class="fac-emoji">🏥</span><div class="fac-title">Medical</div><div class="fac-desc">On-campus medical facilities for student healthcare.</div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PRINCIPAL -->
+  <section class="principal-section">
+    <div style="text-align:center;margin-bottom:1rem;" class="reveal">
+      <div class="section-tag" style="justify-content:center;">Leadership</div>
+      <h2 class="section-title">From the <strong>Principal's Desk</strong></h2>
+    </div>
+    <div class="principal-inner">
+      <div class="reveal">
+        <div class="principal-photo-frame">
+          <img src="https://gcee.ac.in/assets/img/team/gcee_principal.jpg" alt="Dr. A. Saradha" onerror="this.style.display='none';" />
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="principal-role">Principal, GCEE (Formerly IRTT)</div>
+        <div class="principal-name">Dr. A. Saradha</div>
+        <p class="principal-msg">"Our institution stands as a beacon of technical excellence, dedicated to shaping engineers who will contribute meaningfully to society. With a 200-acre green campus and decades of legacy, we continue to provide the finest engineering education accessible to all."</p>
+        <div class="principal-details">
+          <div class="principal-det"><div class="principal-det-label">Qualification</div><div class="principal-det-val">M.E., Ph.D.</div></div>
+          <div class="principal-det"><div class="principal-det-label">Experience</div><div class="principal-det-val">34 Years</div></div>
+          <div class="principal-det"><div class="principal-det-label">Specialization</div><div class="principal-det-val">Semantic Web, Neural Networks</div></div>
+          <div class="principal-det"><div class="principal-det-label">Contact</div><div class="principal-det-val">+91 0424 2533579</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="reveal">
+        <div class="section-tag">Get in Touch</div>
+        <h2 class="section-title" style="margin-bottom:2.5rem;">Contact <strong>Us</strong></h2>
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div><div class="contact-detail-label">Address</div><div class="contact-detail-val">Government College of Engineering (IRTT),<br>Chithode–Bhavani Road, Erode – 638 316,<br>Tamil Nadu, India</div></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <div><div class="contact-detail-label">Phone Numbers</div><div class="contact-detail-val">Principal: 9280091825<br>Help Desk: 9280091826 | +91 0424 2533579<br>Admissions: 9280091827<br>Placement Cell: 9280091830<br>Exam Cell: 9280091829</div></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">✉️</div>
+          <div><div class="contact-detail-label">Email</div><div class="contact-detail-val">gceeprincipal@gmail.com</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="section-tag">Quick Access</div>
+        <h2 class="section-title" style="margin-bottom:1.5rem;">Important <strong>Links</strong></h2>
+        <div class="contact-links">
+          <a href="https://gcee.ac.in/AICTE/AICTE_2025-26.PDF" class="contact-link"><span>📄</span><span class="contact-link-label">AICTE</span><span>2025–26 Disclosure</span></a>
+          <a href="https://gcee.ac.in/NIRF/NIRF2024.pdf" class="contact-link"><span>🏆</span><span class="contact-link-label">NIRF</span><span>2024 Ranking Report</span></a>
+          <a href="https://examgcee.blogspot.com/" class="contact-link"><span>📝</span><span class="contact-link-label">Exam Cell</span><span>Results & Schedules</span></a>
+          <a href="https://gcee.ac.in/admissionug.php" class="contact-link"><span>🎓</span><span class="contact-link-label">UG Admissions</span><span>Apply for B.E. Programs</span></a>
+          <a href="https://gcee.ac.in/admissionpg.php" class="contact-link"><span>🎓</span><span class="contact-link-label">PG Admissions</span><span>Apply for M.E. Programs</span></a>
+          <a href="https://gcee.ac.in/placementstatistics.php" class="contact-link"><span>💼</span><span class="contact-link-label">Placements</span><span>Statistics & Recruiters</span></a>
+          <a href="https://gcee.ac.in/GCEE_Alumni_Donations.php" class="contact-link"><span>🤝</span><span class="contact-link-label">Alumni</span><span>GCEE Alumni Network</span></a>
+          <a href="https://gcee.ac.in/Google_Map.php" class="contact-link"><span>🗺️</span><span class="contact-link-label">Location</span><span>Get Directions — GCEE Campus</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">© 2025 Government College of Engineering, Erode (Formerly IRTT) · All Rights Reserved</div>
+    <div class="footer-links">
+      <a href="https://gcee.ac.in/Committees/Antiragging.pdf">Anti-Ragging</a>
+      <a href="http://www.antiragging.in/">Report Ragging — 1800-180-5522</a>
+      <a href="https://gcee.ac.in/contactus.php">Committees</a>
+      <a href="https://gcee.ac.in/HelpDesk.php">Help Desk</a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 55);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(el => io.observe(el));
+
+    // Navbar compact on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      nav.style.padding = window.scrollY > 60 ? '0.75rem 4rem' : '1.2rem 4rem';
+    });
+  </script>
+</body>
+</html>
