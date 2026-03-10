@@ -1,517 +1,908 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Government College of Engineering, Erode | GCEE (Formerly IRTT)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --navy: #0b1d35;
-      --deep: #071226;
-      --gold: #c9a84c;
-      --gold-light: #e8c97a;
-      --gold-pale: #f5e9c8;
-      --white: #fafaf8;
-      --accent: #1a3a6b;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--deep); color: var(--white); overflow-x: hidden; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCE Erode | Government College of Engineering, Erode</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628; --deep: #071020; --gold: #c9a227; --gold-light: #e8c84a;
+  --gold-muted: #6b5414; --cream: #f5f0e8; --white: #ffffff; --gray: #8c96a4;
+  --glass: rgba(255,255,255,0.04); --gb: rgba(201,162,39,0.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--deep);color:var(--cream);overflow-x:hidden;}
 
-    /* NAVBAR */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4rem;
-      background: rgba(7,18,38,0.88);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
-      transition: padding 0.3s ease;
-    }
-    .nav-brand { display: flex; align-items: center; gap: 1rem; }
-    .nav-emblem {
-      width: 46px; height: 46px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif; font-weight: 700;
-      font-size: 1rem; color: var(--navy); letter-spacing: 0.5px;
-      box-shadow: 0 0 20px rgba(201,168,76,0.3); flex-shrink: 0;
-    }
-    .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; line-height: 1.2; }
-    .nav-name span { display: block; font-size: 0.7rem; font-weight: 400; color: var(--gold-light); letter-spacing: 1.5px; text-transform: uppercase; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: rgba(250,250,248,0.7); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--gold-light); }
-    .nav-cta { background: linear-gradient(135deg, var(--gold), #b8923c); color: var(--navy); font-size: 0.78rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 0.6rem 1.6rem; border-radius: 2px; text-decoration: none; }
+/* ── NOISE ── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:.5;}
 
-    /* ANNOUNCE */
-    .announce {
-      background: linear-gradient(90deg, var(--navy), #112040);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
-      padding: 0.6rem 4rem; display: flex; align-items: center; gap: 1.5rem;
-    }
-    .announce-badge { background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
-    .announce-text { font-size: 0.82rem; color: rgba(250,250,248,0.7); }
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:all .4s;}
+.nav-top{display:flex;align-items:center;justify-content:space-between;padding:16px 50px;background:rgba(7,16,32,.98);border-bottom:1px solid var(--gb);}
+.nav-logo{display:flex;align-items:center;gap:14px;}
+.nav-emblem{width:44px;height:44px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(201,162,39,.1);font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--gold);letter-spacing:1px;flex-shrink:0;}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;line-height:1.25;color:var(--cream);}
+.nav-title span{color:var(--gold);display:block;font-size:10px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;margin-top:2px;}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-badge{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);padding:5px 12px;border:1px solid var(--gb);}
+.nav-cta{background:var(--gold);color:var(--deep);padding:9px 22px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px));}
+.nav-cta:hover{background:var(--gold-light);}
 
-    /* HERO */
-    .hero {
-      position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(26,58,107,0.5) 0%, transparent 70%),
-                  radial-gradient(ellipse 50% 40% at 20% 80%, rgba(201,168,76,0.07) 0%, transparent 60%),
-                  linear-gradient(160deg, rgba(7,18,38,0.8) 0%, rgba(11,29,53,0.9) 50%, #071226 100%);
-    }
-    .hero-grid {
-      position: absolute; inset: 0; z-index: 0;
-      background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .hero-orb {
-      position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
-      width: 500px; height: 500px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(26,58,107,0.4) 0%, rgba(201,168,76,0.08) 50%, transparent 70%);
-      border: 1px solid rgba(201,168,76,0.12);
-      animation: orbPulse 6s ease-in-out infinite;
-    }
-    .hero-orb::before { content: ''; position: absolute; inset: 30px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.18); animation: orbPulse 6s ease-in-out infinite reverse; }
-    .hero-orb::after { content: ''; position: absolute; inset: 70px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.08); }
-    @keyframes orbPulse {
-      0%, 100% { transform: translateY(-50%) scale(1); opacity: 1; }
-      50% { transform: translateY(-50%) scale(1.05); opacity: 0.75; }
-    }
-    .hero-content { position: relative; z-index: 2; padding: 0 4rem; max-width: 680px; }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.7rem;
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 1.6rem; animation: fadeUp 0.9s 0.1s ease both;
-    }
-    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.4rem);
-      font-weight: 300; line-height: 1.07; margin-bottom: 0.5rem;
-      animation: fadeUp 0.9s 0.2s ease both;
-    }
-    .hero-title em {
-      font-style: italic; font-weight: 600;
-      background: linear-gradient(90deg, var(--gold-light), var(--gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero-subtitle { font-size: 1rem; color: rgba(250,250,248,0.55); font-weight: 300; letter-spacing: 1px; margin-bottom: 2rem; animation: fadeUp 0.9s 0.3s ease both; }
-    .hero-desc { font-size: 1rem; line-height: 1.8; color: rgba(250,250,248,0.75); font-weight: 300; max-width: 540px; margin-bottom: 2.8rem; animation: fadeUp 0.9s 0.4s ease both; }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.9s 0.5s ease both; }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--gold), #b8923c); color: var(--navy); font-size: 0.8rem; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase; padding: 0.9rem 2.4rem; border-radius: 2px; text-decoration: none;
-      box-shadow: 0 4px 20px rgba(201,168,76,0.3); transition: all 0.25s;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.4); }
-    .btn-outline { border: 1px solid rgba(201,168,76,0.4); color: var(--gold-light); font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.9rem 2.4rem; border-radius: 2px; text-decoration: none; transition: all 0.25s; }
-    .btn-outline:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
-    .hero-stats {
-      position: absolute; bottom: 4rem; left: 4rem; right: 4rem; z-index: 2;
-      display: grid; grid-template-columns: repeat(4,1fr);
-      border-top: 1px solid rgba(201,168,76,0.15); padding-top: 2.5rem;
-      animation: fadeUp 0.9s 0.7s ease both;
-    }
-    .stat { padding: 0 2rem; border-right: 1px solid rgba(201,168,76,0.1); }
-    .stat:first-child { padding-left: 0; }
-    .stat:last-child { border-right: none; }
-    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 600; line-height: 1; background: linear-gradient(90deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .stat-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(250,250,248,0.4); margin-top: 0.4rem; }
+.nav-links-bar{background:rgba(5,12,24,.97);border-bottom:1px solid var(--gb);padding:0 50px;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;}
+.nav-links-bar::-webkit-scrollbar{display:none;}
+.nav-links-bar a{display:flex;align-items:center;padding:13px 18px;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;color:var(--gray);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .3s;position:relative;}
+.nav-links-bar a:hover,.nav-links-bar a.active{color:var(--gold-light);border-bottom-color:var(--gold);}
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+/* ── HERO ── */
+#home{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;padding-top:104px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 72% 45%,rgba(201,162,39,.09) 0%,transparent 60%),linear-gradient(140deg,#071020 0%,#0a1628 55%,#0e1f3a 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,.05) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 75% 75% at 80% 50%,black 0%,transparent 70%);}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1300px;margin:0 auto;padding:60px 50px;gap:60px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.3);padding:6px 16px;margin-bottom:28px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-light);animation:fsu .8s ease both;}
+.hero-badge::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;}
+.hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:5px;color:var(--gold);margin-bottom:12px;animation:fsu .8s .1s ease both;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(50px,6.5vw,90px);font-weight:300;line-height:.92;margin-bottom:26px;animation:fsu .8s .2s ease both;}
+.hero-title em{font-style:italic;color:var(--gold);display:block;}
+.hero-title strong{font-weight:600;display:block;background:linear-gradient(135deg,var(--cream) 0%,var(--gold-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:15px;font-weight:300;line-height:1.75;color:var(--gray);max-width:480px;margin-bottom:40px;animation:fsu .8s .3s ease both;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fsu .8s .4s ease both;}
+.btn-g{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--deep);padding:14px 32px;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;position:relative;overflow:hidden;border:none;cursor:pointer;clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));}
+.btn-g::before{content:'';position:absolute;inset:0;background:var(--gold-light);transform:translateX(-100%);transition:transform .3s;}
+.btn-g:hover::before{transform:translateX(0);}
+.btn-g span{position:relative;z-index:1;}
+.btn-o{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gb);color:var(--cream);padding:14px 32px;font-size:12px;font-weight:400;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.05);}
 
-    /* STRIP */
-    .strip { background: var(--gold); padding: 1.1rem 4rem; display: flex; align-items: center; gap: 2.5rem; overflow-x: auto; }
-    .strip-item { display: flex; align-items: center; gap: 0.7rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); white-space: nowrap; }
-    .strip-dot { width: 5px; height: 5px; background: var(--navy); border-radius: 50%; flex-shrink: 0; }
+/* hero right cards */
+.hero-cards{position:relative;height:440px;animation:fadeIn 1.2s .5s ease both;}
+.hc-main{position:absolute;top:30px;left:0;width:320px;background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.2);backdrop-filter:blur(18px);padding:32px;animation:float 6s ease-in-out infinite;}
+.hc-main-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.hc-main-tag::before{content:'';flex:1;height:1px;background:rgba(201,162,39,.3);}
+.hc-main-num{font-family:'Bebas Neue',sans-serif;font-size:60px;line-height:1;color:var(--gold-light);}
+.hc-main-lbl{font-size:11px;color:var(--gray);letter-spacing:1px;margin-top:4px;}
+.hc-sec{position:absolute;bottom:50px;right:0;width:185px;background:linear-gradient(135deg,rgba(201,162,39,.15),rgba(201,162,39,.05));border:1px solid rgba(201,162,39,.3);padding:22px;animation:float 6s 2s ease-in-out infinite;}
+.hc-sec .n{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--white);}
+.hc-sec .l{font-size:10px;color:var(--gray);letter-spacing:1px;}
+.hc-glow{position:absolute;top:-10px;right:-10px;width:100px;height:100px;opacity:.15;background:radial-gradient(circle,var(--gold) 0%,transparent 70%);animation:pulse 4s ease-in-out infinite;}
 
-    /* SECTIONS */
-    section { padding: 6rem 4rem; }
-    .section-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.7rem; }
-    .section-tag::before { content: ''; display: block; width: 26px; height: 1px; background: var(--gold); }
-    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.15; }
-    .section-title strong { font-weight: 700; }
-    .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent); }
+/* ── MARQUEE ── */
+.marquee{border-top:1px solid rgba(201,162,39,.12);border-bottom:1px solid rgba(201,162,39,.12);background:rgba(201,162,39,.035);padding:14px 0;overflow:hidden;}
+.mtrack{display:flex;gap:52px;animation:marquee 28s linear infinite;white-space:nowrap;}
+.mitem{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);flex-shrink:0;}
+.mdot{width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;}
 
-    /* ABOUT */
-    .about { background: var(--navy); }
-    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; max-width: 1200px; margin: 0 auto; }
-    .about-text p { font-size: 0.98rem; line-height: 1.85; color: rgba(250,250,248,0.7); margin-bottom: 1.4rem; font-weight: 300; }
-    .about-card { background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(26,58,107,0.25)); border: 1px solid rgba(201,168,76,0.16); border-radius: 4px; padding: 2.5rem; }
-    .about-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--gold-light); margin-bottom: 1.2rem; }
-    .about-badge { display: inline-block; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.28); color: var(--gold-light); font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.3rem 0.85rem; border-radius: 20px; margin: 0.25rem 0.25rem 0.25rem 0; }
-    .about-info { margin-top: 1.8rem; }
-    .about-info-row { display: flex; gap: 0.6rem; align-items: flex-start; margin-bottom: 0.7rem; }
-    .about-info-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); min-width: 78px; padding-top: 2px; }
-    .about-info-val { font-size: 0.88rem; color: rgba(250,250,248,0.75); }
+/* ── SHARED SECTION STYLES ── */
+.section{padding:100px 50px;max-width:1300px;margin:0 auto;}
+.section-full{padding:100px 50px;}
+.section-full-inner{max-width:1300px;margin:0 auto;}
+.stag{display:flex;align-items:center;gap:11px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.stag::before{content:'';width:26px;height:1px;background:var(--gold);flex-shrink:0;}
+.stag.center{justify-content:center;}
+.stag.center::before{display:none;}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.2vw,52px);font-weight:300;line-height:1.1;margin-bottom:22px;}
+.stitle em{font-style:italic;color:var(--gold);}
+.stitle.center{text-align:center;}
+.sbody{font-size:14px;line-height:1.8;color:var(--gray);margin-bottom:16px;}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,39,.2),transparent);margin:0;}
 
-    /* PROGRAMS */
-    .programs { background: var(--deep); }
-    .programs-header { max-width: 1200px; margin: 0 auto 3.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; }
-    .programs-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    .prog-card { background: rgba(11,29,53,0.8); border: 1px solid rgba(201,168,76,0.08); padding: 1.8rem 2rem; position: relative; overflow: hidden; transition: all 0.3s ease; }
-    .prog-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
-    .prog-card:hover::before { transform: scaleX(1); }
-    .prog-card:hover { background: rgba(26,58,107,0.35); border-color: rgba(201,168,76,0.2); transform: translateY(-3px); }
-    .prog-type { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
-    .prog-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; line-height: 1.3; margin-bottom: 0.5rem; }
-    .prog-intake { font-size: 0.78rem; color: rgba(250,250,248,0.4); }
-    .prog-icon { position: absolute; right: 1.5rem; top: 1.5rem; font-size: 1.2rem; opacity: 0.6; }
+/* ── STATS ── */
+.stats-wrap{background:linear-gradient(180deg,var(--deep) 0%,var(--navy) 100%);padding:80px 50px;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1300px;margin:0 auto;}
+.scard{padding:44px 36px;background:var(--glass);border:1px solid var(--gb);position:relative;overflow:hidden;transition:all .4s;display:flex;flex-direction:column;align-items:flex-start;}
+.scard:hover{background:rgba(201,162,39,.07);transform:translateY(-4px);}
+.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .4s;}
+.scard:hover::before{transform:scaleX(1);}
+.sicon{font-size:24px;margin-bottom:18px;}
+.snum{font-family:'Cormorant Garamond',serif;font-size:58px;font-weight:300;line-height:1;color:var(--gold-light);display:flex;align-items:baseline;gap:2px;}
+.sunit{font-size:24px;}
+.slbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-top:8px;line-height:1.4;}
 
-    /* VISION MISSION */
-    .vision { background: var(--navy); }
-    .vision-inner { max-width: 1200px; margin: 3rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-    .vision-block { background: linear-gradient(135deg, rgba(201,168,76,0.05), rgba(11,29,53,0.5)); border: 1px solid rgba(201,168,76,0.15); border-radius: 4px; padding: 3rem; position: relative; overflow: hidden; }
-    .vision-block::after { content: '"'; position: absolute; right: 1rem; top: -1.5rem; font-family: 'Cormorant Garamond', serif; font-size: 10rem; font-weight: 700; color: rgba(201,168,76,0.04); line-height: 1; pointer-events: none; }
-    .vision-icon { font-size: 1.8rem; margin-bottom: 1.2rem; display: block; }
-    .vision-heading { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--gold-light); margin-bottom: 1.2rem; }
-    .vision-text { font-size: 0.96rem; line-height: 1.85; color: rgba(250,250,248,0.7); font-weight: 300; }
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.about-pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px;}
+.pill{padding:6px 15px;border:1px solid var(--gb);font-size:11px;color:var(--cream);letter-spacing:.5px;transition:all .3s;}
+.pill:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.06);}
+.about-visual{position:relative;height:460px;}
+.ab-box{position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,162,39,.09),rgba(7,16,32,.85));border:1px solid rgba(201,162,39,.18);display:flex;align-items:flex-end;padding:32px;}
+.ab-info{background:var(--deep);border:1px solid rgba(201,162,39,.25);padding:22px;width:100%;}
+.ab-info h4{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--gold-light);margin-bottom:7px;}
+.ab-info p{font-size:12px;color:var(--gray);line-height:1.6;}
+.ab-yr{position:absolute;top:-16px;right:-12px;background:var(--gold);color:var(--deep);width:80px;height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;}
+.ab-yr span:first-child{font-size:28px;line-height:1;}
+.ab-yr span:last-child{font-size:9px;letter-spacing:2px;}
 
-    /* FACILITIES */
-    .facilities { background: var(--deep); }
-    .fac-grid { max-width: 1200px; margin: 3rem auto 0; display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
-    .fac-card { border: 1px solid rgba(201,168,76,0.1); padding: 2rem 1.5rem; background: rgba(11,29,53,0.6); border-radius: 3px; text-align: center; transition: all 0.3s ease; }
-    .fac-card:hover { border-color: rgba(201,168,76,0.3); background: rgba(26,58,107,0.3); transform: translateY(-4px); }
-    .fac-emoji { font-size: 2rem; display: block; margin-bottom: 1rem; }
-    .fac-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; }
-    .fac-desc { font-size: 0.8rem; color: rgba(250,250,248,0.48); line-height: 1.6; }
+/* ── ACADEMICS ── */
+.academics-bg{background:linear-gradient(180deg,var(--navy) 0%,var(--deep) 100%);}
+.dept-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,162,39,.08);margin-top:56px;}
+.dcard{background:var(--navy);padding:36px 28px;cursor:default;transition:all .4s;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;}
+.dcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0;background:linear-gradient(0deg,rgba(201,162,39,.1),transparent);transition:height .4s;}
+.dcard:hover::after{height:100%;}
+.dcard:hover{transform:translateY(-5px);z-index:2;box-shadow:0 18px 50px rgba(0,0,0,.5);}
+.dicon{width:46px;height:46px;margin-bottom:20px;border:1px solid rgba(201,162,39,.28);display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .3s;flex-shrink:0;}
+.dcard:hover .dicon{border-color:var(--gold);background:rgba(201,162,39,.1);}
+.dname{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;margin-bottom:9px;color:var(--cream);line-height:1.2;}
+.ddesc{font-size:12px;color:var(--gray);line-height:1.6;flex:1;}
+.dtype{margin-top:16px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-muted);}
 
-    /* PRINCIPAL */
-    .principal-section { background: var(--navy); }
-    .principal-inner { max-width: 980px; margin: 3.5rem auto 0; display: grid; grid-template-columns: 280px 1fr; gap: 5rem; align-items: center; }
-    .principal-photo-frame { width: 100%; aspect-ratio: 3/4; background: linear-gradient(160deg, rgba(26,58,107,0.6), rgba(201,168,76,0.1)); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: rgba(201,168,76,0.3); }
-    .principal-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-    .principal-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .principal-role { font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
-    .principal-msg { font-size: 1rem; line-height: 1.85; color: rgba(250,250,248,0.7); font-weight: 300; font-style: italic; border-left: 2px solid var(--gold); padding-left: 1.5rem; margin-bottom: 1.5rem; }
-    .principal-details { display: flex; gap: 2rem; flex-wrap: wrap; }
-    .principal-det-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); }
-    .principal-det-val { font-size: 0.88rem; color: rgba(250,250,248,0.78); margin-top: 0.2rem; }
+/* ── FACILITIES ── */
+.fac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;}
+.fcard{background:var(--glass);border:1px solid var(--gb);padding:36px 30px;transition:all .4s;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;}
+.fcard:hover{border-color:rgba(201,162,39,.45);transform:translateY(-4px);}
+.fcard::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--gold);transition:height .4s;}
+.fcard:hover::before{height:100%;}
+.ficon{font-size:32px;margin-bottom:18px;}
+.ftitle{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;margin-bottom:10px;color:var(--cream);}
+.fbody{font-size:13px;color:var(--gray);line-height:1.65;}
+.flist{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:6px;}
+.flist li{font-size:12px;color:var(--gray);display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+.flist li::before{content:'›';color:var(--gold);flex-shrink:0;font-size:14px;line-height:1.3;}
 
-    /* CONTACT */
-    .contact { background: var(--deep); }
-    .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
-    .contact-row { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
-    .contact-icon { width: 42px; height: 42px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-    .contact-detail-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
-    .contact-detail-val { font-size: 0.9rem; color: rgba(250,250,248,0.72); line-height: 1.6; }
-    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
-    .contact-link { display: flex; align-items: center; gap: 0.8rem; font-size: 0.84rem; color: rgba(250,250,248,0.6); text-decoration: none; padding: 0.7rem 1rem; border: 1px solid rgba(201,168,76,0.1); border-radius: 3px; background: rgba(11,29,53,0.5); transition: all 0.25s; }
-    .contact-link:hover { color: var(--gold-light); border-color: rgba(201,168,76,0.3); background: rgba(26,58,107,0.3); }
-    .contact-link-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-right: auto; }
+/* ── PLACEMENT ── */
+.placement-bg{background:linear-gradient(180deg,var(--navy) 0%,var(--deep) 100%);}
+.place-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start;margin-top:56px;}
+.place-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;}
+.pstat{background:var(--glass);border:1px solid var(--gb);padding:24px 20px;transition:all .3s;}
+.pstat:hover{border-color:var(--gold);background:rgba(201,162,39,.06);}
+.pnum{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--gold-light);line-height:1;}
+.plbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-top:4px;}
+.place-companies h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream);margin-bottom:18px;}
+.company-tags{display:flex;flex-wrap:wrap;gap:9px;}
+.ctag{padding:7px 15px;border:1px solid var(--gb);font-size:11px;color:var(--cream);letter-spacing:.5px;transition:all .3s;}
+.ctag:hover{border-color:var(--gold);color:var(--gold);}
+.place-process{margin-top:32px;}
+.place-process h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--cream);margin-bottom:16px;}
+.pstep{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px;}
+.pstep-num{width:32px;height:32px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--gold);flex-shrink:0;}
+.pstep-info h5{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px;}
+.pstep-info p{font-size:12px;color:var(--gray);line-height:1.5;}
 
-    /* FOOTER */
-    footer { background: #050d1a; border-top: 1px solid rgba(201,168,76,0.1); padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: rgba(250,250,248,0.35); }
-    .footer-links { display: flex; gap: 2rem; }
-    .footer-links a { font-size: 0.7rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(250,250,248,0.3); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--gold); }
+/* ── COMMITTEES ── */
+.comm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px;}
+.ccard{background:var(--glass);border:1px solid var(--gb);padding:30px;transition:all .4s;position:relative;}
+.ccard:hover{border-color:rgba(201,162,39,.4);background:rgba(201,162,39,.04);}
+.ccard-icon{font-size:26px;margin-bottom:14px;}
+.ccard-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream);margin-bottom:8px;line-height:1.2;}
+.ccard-body{font-size:12px;color:var(--gray);line-height:1.6;}
 
-    /* Reveal */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+/* ── AICTE / NIRF ── */
+.aicte-bg{background:linear-gradient(180deg,var(--navy) 0%,var(--deep) 100%);}
+.doc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:48px;}
+.doc-card{background:var(--glass);border:1px solid var(--gb);padding:28px 24px;display:flex;align-items:flex-start;gap:20px;transition:all .3s;}
+.doc-card:hover{border-color:rgba(201,162,39,.4);background:rgba(201,162,39,.04);}
+.doc-icon{font-size:28px;flex-shrink:0;}
+.doc-body h4{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--cream);margin-bottom:5px;}
+.doc-body p{font-size:12px;color:var(--gray);line-height:1.6;}
+.doc-link{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:color .3s;}
+.doc-link:hover{color:var(--gold-light);}
 
-    @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links, .nav-cta { display: none; }
-      .hero-content { padding: 0 1.5rem; }
-      .hero-orb { display: none; }
-      .hero-stats { left: 1.5rem; right: 1.5rem; grid-template-columns: repeat(2,1fr); gap: 1.5rem; bottom: 2rem; }
-      section { padding: 4rem 1.5rem; }
-      .about-inner, .vision-inner, .contact-inner, .principal-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .programs-grid { grid-template-columns: 1fr 1fr; }
-      .fac-grid { grid-template-columns: 1fr 1fr; }
-      .strip, .announce { padding: 1rem 1.5rem; }
-      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
-    }
-  </style>
+/* ── NIRF ── */
+.nirf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
+.nirf-card{background:var(--glass);border:1px solid var(--gb);padding:28px 24px;transition:all .3s;text-align:left;}
+.nirf-card:hover{border-color:rgba(201,162,39,.4);background:rgba(201,162,39,.04);}
+.nirf-rank{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--gold-light);line-height:1;}
+.nirf-cat{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.nirf-desc{font-size:12px;color:var(--gray);line-height:1.6;}
+
+/* ── EXAM CELL ── */
+.exam-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.timeline{margin-top:12px;}
+.titem{display:flex;gap:18px;margin-bottom:24px;position:relative;}
+.titem::before{content:'';position:absolute;left:13px;top:26px;bottom:-4px;width:1px;background:rgba(201,162,39,.2);}
+.titem:last-child::before{display:none;}
+.tdot{width:26px;height:26px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;background:var(--deep);}
+.tdot::after{content:'';width:8px;height:8px;background:var(--gold);border-radius:50%;}
+.tinfo h5{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px;}
+.tinfo p{font-size:12px;color:var(--gray);line-height:1.55;}
+.exam-contacts{display:flex;flex-direction:column;gap:14px;margin-top:12px;}
+.econ{background:var(--glass);border:1px solid var(--gb);padding:20px 22px;display:flex;gap:16px;align-items:flex-start;transition:all .3s;}
+.econ:hover{border-color:rgba(201,162,39,.4);}
+.econ-icon{font-size:20px;flex-shrink:0;}
+.econ h5{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.econ p{font-size:13px;color:var(--gray);line-height:1.55;}
+
+/* ── ALUMNI ── */
+.alumni-bg{background:linear-gradient(180deg,var(--navy) 0%,var(--deep) 100%);}
+.alumni-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
+.alcard{background:var(--glass);border:1px solid var(--gb);padding:30px;transition:all .4s;position:relative;overflow:hidden;}
+.alcard:hover{border-color:rgba(201,162,39,.4);transform:translateY(-3px);}
+.alcard::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .4s;}
+.alcard:hover::before{transform:scaleX(1);}
+.al-avatar{width:52px;height:52px;border:2px solid var(--gb);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);background:rgba(201,162,39,.1);margin-bottom:16px;}
+.al-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream);margin-bottom:4px;}
+.al-role{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.al-body{font-size:12px;color:var(--gray);line-height:1.6;}
+.alumni-cta{margin-top:48px;background:var(--glass);border:1px solid var(--gb);padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.alumni-cta p{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--cream);}
+.alumni-cta p em{font-style:italic;color:var(--gold);}
+
+/* ── QUOTE ── */
+.quote-wrap{padding:90px 50px;background:var(--navy);text-align:center;position:relative;overflow:hidden;}
+.qbg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:380px;line-height:1;color:rgba(201,162,39,.025);pointer-events:none;user-select:none;}
+.qmark{font-family:'Cormorant Garamond',serif;font-size:90px;color:var(--gold);line-height:.5;display:block;margin-bottom:28px;}
+.qtext{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.8vw,38px);font-weight:300;font-style:italic;max-width:820px;margin:0 auto 28px;line-height:1.45;color:var(--cream);position:relative;z-index:1;}
+.qsrc{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.cinfo-item{display:flex;gap:16px;margin-bottom:28px;align-items:flex-start;}
+.cicon{width:40px;height:40px;flex-shrink:0;border:1px solid var(--gb);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.cdetail h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.cdetail p{font-size:13px;color:var(--gray);line-height:1.65;}
+.cform{display:flex;flex-direction:column;gap:13px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.fg{display:flex;flex-direction:column;gap:6px;}
+.fg label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.04);border:1px solid var(--gb);color:var(--cream);padding:12px 15px;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:border-color .3s;resize:vertical;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg select option{background:var(--deep);}
+
+/* ── FOOTER ── */
+footer{background:var(--deep);border-top:1px solid rgba(201,162,39,.13);padding:56px 50px 36px;}
+.foot-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;}
+.flogo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream);margin-bottom:12px;}
+.flogo span{color:var(--gold);}
+.fdesc{font-size:12px;color:var(--gray);line-height:1.75;max-width:270px;}
+.fcol h5{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.fcol a{text-decoration:none;font-size:12px;color:var(--gray);transition:color .3s;}
+.fcol a:hover{color:var(--gold-light);}
+.foot-bottom{max-width:1300px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--gray);}
+.foot-bottom span{color:var(--gold);}
+
+/* ── SCROLL TOP ── */
+#scrollTop{position:fixed;bottom:28px;right:28px;z-index:300;width:44px;height:44px;background:var(--gold);color:var(--deep);border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:0;transform:translateY(16px);clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px));}
+#scrollTop.vis{opacity:1;transform:translateY(0);}
+#scrollTop:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+/* ── ANIMATIONS ── */
+@keyframes fsu{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.15;}50%{transform:scale(1.25);opacity:.22;}}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+
+/* ── MOBILE ── */
+@media(max-width:1024px){
+  .nav-top{padding:14px 20px;}
+  .nav-links-bar{padding:0 20px;}
+  .nav-links-bar a{padding:11px 13px;font-size:11px;}
+  .hero-inner{grid-template-columns:1fr;padding:50px 20px;}
+  .hero-cards{display:none;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .stats-wrap{padding:60px 20px;}
+  .section{padding:70px 20px;}
+  .section-full{padding:70px 20px;}
+  .about-grid,.exam-grid,.contact-grid,.place-grid{grid-template-columns:1fr;gap:44px;}
+  .about-visual{height:260px;}
+  .dept-grid,.comm-grid,.fac-grid,.nirf-grid,.alumni-grid{grid-template-columns:1fr 1fr;}
+  .doc-grid{grid-template-columns:1fr;}
+  .foot-inner{grid-template-columns:1fr 1fr;gap:32px;}
+  footer{padding:40px 20px 28px;}
+  .frow{grid-template-columns:1fr;}
+  .alumni-cta{flex-direction:column;align-items:flex-start;}
+  .foot-bottom{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:640px){
+  .dept-grid,.comm-grid,.fac-grid,.nirf-grid,.alumni-grid,.place-stats,.doc-grid{grid-template-columns:1fr;}
+  .foot-inner{grid-template-columns:1fr;}
+  .nav-links-bar a{padding:10px 10px;font-size:10px;letter-spacing:.8px;}
+}
+</style>
 </head>
 <body>
 
-  <div class="announce">
-    <span class="announce-badge">New 2025–26</span>
-    <span class="announce-text">🎓 CSE (Data Science) now available — 60 seats · Anna University Affiliated · AICTE Approved Institution · Erode, Tamil Nadu</span>
-  </div>
-
-  <nav id="navbar">
-    <div class="nav-brand">
+<!-- ══════ NAVBAR ══════ -->
+<nav id="navbar">
+  <div class="nav-top">
+    <div class="nav-logo">
       <div class="nav-emblem">GCE</div>
-      <div class="nav-name">
+      <div class="nav-title">
         Government College of Engineering
-        <span>Erode (IRTT) — Est. 1984</span>
+        <span>Erode (IRTT) · Est. 1984</span>
       </div>
     </div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#programs">Programs</a></li>
-      <li><a href="#facilities">Campus</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#programs" class="nav-cta">Apply Now</a>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-orb"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow">Formerly IRTT · Est. 1984 · Erode, Tamil Nadu</div>
-      <h1 class="hero-title">
-        Shaping <em>Engineers</em><br>of Tomorrow
-      </h1>
-      <p class="hero-subtitle">Government College of Engineering, Erode</p>
-      <p class="hero-desc">A premier government engineering institution affiliated to Anna University, Chennai — set on a sprawling 200-acre green campus, delivering four decades of technical excellence to students across Tamil Nadu.</p>
-      <div class="hero-actions">
-        <a href="#programs" class="btn-primary">Explore Programs</a>
-        <a href="#about" class="btn-outline">Discover GCEE</a>
-      </div>
+    <div class="nav-right">
+      <span class="nav-badge">Anna University Affiliated</span>
+      <a href="#contact" class="nav-cta">Apply Now</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">1984</div>
-        <div class="stat-label">Year Established</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">200</div>
-        <div class="stat-label">Acre Campus</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">10+</div>
-        <div class="stat-label">Programs Offered</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">40+</div>
-        <div class="stat-label">Years of Excellence</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STRIP -->
-  <div class="strip">
-    <div class="strip-item">✦ AICTE Approved</div><div class="strip-dot"></div>
-    <div class="strip-item">Anna University Affiliated</div><div class="strip-dot"></div>
-    <div class="strip-item">DoTE, Tamil Nadu</div><div class="strip-dot"></div>
-    <div class="strip-item">NIRF Ranked</div><div class="strip-dot"></div>
-    <div class="strip-item">Zone-XI Zonal HQ</div><div class="strip-dot"></div>
-    <div class="strip-item">200-Acre Green Campus</div>
   </div>
+  <div class="nav-links-bar">
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#academics">Academics</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#placement">Placement</a>
+    <a href="#committees">Committees</a>
+    <a href="#aicte">AICTE</a>
+    <a href="#nirf">NIRF</a>
+    <a href="#examcell">Exam Cell</a>
+    <a href="#alumni">Alumni</a>
+    <a href="#contact">Contact Us</a>
+  </div>
+</nav>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-inner">
-      <div class="about-text reveal">
-        <div class="section-tag">About GCEE</div>
-        <h2 class="section-title" style="margin-bottom:1.8rem;">A Legacy of <strong>Academic Excellence</strong></h2>
-        <p>The Government College of Engineering, Erode (formerly IRTT) was established in 1984 under the Institute of Road Transport by the Tamil Nadu State Transport Corporation. On 26 August 2021, the Higher Education Minister of Tamil Nadu announced its transition under the Directorate of Technical Education (DoTE), renaming it as Government College of Engineering, Erode.</p>
-        <p>Located on a sprawling 200-acre lush green campus between Chithode and Bhavani in Erode district — just 15 km from Erode Railway Station — the institute provides a congenial atmosphere for technical education with excellent infrastructure, well-equipped laboratories, and highly qualified faculty.</p>
-        <p>The Institute serves as the Zonal Headquarters for Zone-XI (Erode Zone) of Anna University, monitoring engineering colleges across Erode, Namakkal, Tiruppur, and Salem districts.</p>
-      </div>
-      <div class="reveal">
-        <div class="about-card">
-          <div class="about-card-title">Institution Highlights</div>
-          <div>
-            <span class="about-badge">AICTE Approved</span>
-            <span class="about-badge">Anna University</span>
-            <span class="about-badge">DoTE Tamil Nadu</span>
-            <span class="about-badge">Zone-XI HQ</span>
-            <span class="about-badge">200 Acres</span>
-            <span class="about-badge">NIRF Ranked</span>
-          </div>
-          <div class="about-info">
-            <div class="about-info-row">
-              <span class="about-info-label">Principal</span>
-              <span class="about-info-val">Dr. A. Saradha, M.E., Ph.D.</span>
-            </div>
-            <div class="about-info-row">
-              <span class="about-info-label">Location</span>
-              <span class="about-info-val">Chithode–Bhavani Road, Erode – 638 316, Tamil Nadu</span>
-            </div>
-            <div class="about-info-row">
-              <span class="about-info-label">Phone</span>
-              <span class="about-info-val">+91 0424 2533579 | 9280091825</span>
-            </div>
-            <div class="about-info-row">
-              <span class="about-info-label">Email</span>
-              <span class="about-info-val">gceeprincipal@gmail.com</span>
-            </div>
-            <div class="about-info-row">
-              <span class="about-info-label">Affiliated</span>
-              <span class="about-info-val">Anna University, Chennai</span>
-            </div>
-          </div>
-        </div>
+<!-- ══════ HOME / HERO ══════ -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">DoTE Approved &nbsp;·&nbsp; AICTE New Delhi</div>
+      <p class="hero-eyebrow">Government College of Engineering</p>
+      <h1 class="hero-title">
+        <em>Erode</em>
+        <strong>Engineering<br>Excellence</strong>
+      </h1>
+      <p class="hero-sub">A premier government institution on a 200-acre green campus between Chithode &amp; Bhavani, shaping India's future engineers since 1984.</p>
+      <div class="hero-btns">
+        <a href="#academics" class="btn-g"><span>Explore Programs</span><span>→</span></a>
+        <a href="#about" class="btn-o">Our Story →</a>
       </div>
     </div>
-  </section>
+    <div class="hero-cards">
+      <div class="hc-glow"></div>
+      <div class="hc-main">
+        <div class="hc-main-tag">Established</div>
+        <div class="hc-main-num">1984</div>
+        <div class="hc-main-lbl">40+ years of academic excellence</div>
+      </div>
+      <div class="hc-sec">
+        <div class="n">200</div>
+        <div class="l">Acres · Green Campus</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <div class="divider"></div>
+<!-- marquee -->
+<div class="marquee">
+  <div class="mtrack">
+    <div class="mitem"><div class="mdot"></div>Anna University Affiliated</div>
+    <div class="mitem"><div class="mdot"></div>8 UG Programs</div>
+    <div class="mitem"><div class="mdot"></div>2 PG Programs</div>
+    <div class="mitem"><div class="mdot"></div>DoTE Governed</div>
+    <div class="mitem"><div class="mdot"></div>Industry-Institute Partnership</div>
+    <div class="mitem"><div class="mdot"></div>PhD Research Programs</div>
+    <div class="mitem"><div class="mdot"></div>Zone-XI Anna University HQ</div>
+    <div class="mitem"><div class="mdot"></div>Top Campus Placements</div>
+    <div class="mitem"><div class="mdot"></div>Naan Mudhalvan Program</div>
+    <div class="mitem"><div class="mdot"></div>Anna University Affiliated</div>
+    <div class="mitem"><div class="mdot"></div>8 UG Programs</div>
+    <div class="mitem"><div class="mdot"></div>2 PG Programs</div>
+    <div class="mitem"><div class="mdot"></div>DoTE Governed</div>
+    <div class="mitem"><div class="mdot"></div>Industry-Institute Partnership</div>
+    <div class="mitem"><div class="mdot"></div>PhD Research Programs</div>
+    <div class="mitem"><div class="mdot"></div>Zone-XI Anna University HQ</div>
+    <div class="mitem"><div class="mdot"></div>Top Campus Placements</div>
+    <div class="mitem"><div class="mdot"></div>Naan Mudhalvan Program</div>
+  </div>
+</div>
 
-  <!-- PROGRAMS -->
-  <section class="programs" id="programs">
-    <div class="programs-header reveal">
+<!-- stats -->
+<div class="stats-wrap">
+  <div class="stats-grid reveal">
+    <div class="scard"><div class="sicon">🏛️</div><div class="snum" data-target="40" data-sfx="+">40+</div><div class="slbl">Years of Excellence</div></div>
+    <div class="scard"><div class="sicon">🎓</div><div class="snum" data-target="420" data-sfx="">420</div><div class="slbl">Annual Intake</div></div>
+    <div class="scard"><div class="sicon">📚</div><div class="snum" data-target="10" data-sfx="">10</div><div class="slbl">Academic Programs</div></div>
+    <div class="scard"><div class="sicon">🌿</div><div class="snum" data-target="200" data-sfx="">200</div><div class="slbl">Acre Campus</div></div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ══════ ABOUT US ══════ -->
+<section id="about" class="section">
+  <div class="about-grid reveal">
+    <div>
+      <div class="stag">About Us</div>
+      <h2 class="stitle">A Legacy of <em>Technical</em> Leadership</h2>
+      <p class="sbody">Established in 1984 under the Tamil Nadu State Transport Corporation (TNSTC), Government College of Engineering, Erode — formerly known as IRTT — was founded with a noble mission: to provide quality engineering education to the underprivileged.</p>
+      <p class="sbody">In 2021, the college was transferred to the Directorate of Technical Education (DoTE) and now serves as the Zonal Headquarters for Zone-XI (Erode Zone) of Anna University, monitoring affiliated colleges across Erode, Namakkal, Tiruppur, and Salem districts.</p>
+      <p class="sbody">Situated 15 km from Erode Railway Station on NH-47, between Chithode and Bhavani, our sprawling 200-acre green campus is a hub of academic excellence, innovation, and research.</p>
+      <div class="about-pills">
+        <div class="pill">Anna University Affiliated</div>
+        <div class="pill">AICTE Approved</div>
+        <div class="pill">DoTE Governed</div>
+        <div class="pill">PhD Programs</div>
+        <div class="pill">IIP Cell Active</div>
+        <div class="pill">Naan Mudhalvan</div>
+        <div class="pill">Zone-XI HQ</div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="ab-box">
+        <div class="ab-info">
+          <h4>Zone-XI Anna University HQ</h4>
+          <p>Overseeing engineering colleges affiliated to Anna University across Erode, Namakkal, Tiruppur &amp; Salem districts — a mark of institutional authority.</p>
+        </div>
+      </div>
+      <div class="ab-yr"><span>1984</span><span>EST.</span></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ══════ ACADEMICS ══════ -->
+<section id="academics" class="section-full academics-bg">
+  <div class="section-full-inner">
+    <div class="reveal" style="text-align:center">
+      <div class="stag center">Academic Programs</div>
+      <h2 class="stitle center">Departments of <em>Excellence</em></h2>
+      <p class="sbody" style="text-align:center;max-width:580px;margin:0 auto 0">8 undergraduate and 2 postgraduate programs spanning core and emerging engineering disciplines.</p>
+    </div>
+    <div class="dept-grid reveal">
+      <div class="dcard"><div class="dicon">⚙️</div><div class="dname">Mechanical Engineering</div><div class="ddesc">CAD/CAM, Mechatronics, IoT labs. Innovative Product Development Centre (IPDC). In-plant training at TAFE, TVS &amp; Hyundai.</div><div class="dtype">B.E · UG · 60 seats</div></div>
+      <div class="dcard"><div class="dicon">📡</div><div class="dname">Electronics &amp; Communication</div><div class="ddesc">Industry-aligned curriculum with advanced ECE labs. Graduates placed at Cadence Design Systems and top MNCs.</div><div class="dtype">B.E · UG · 60 seats</div></div>
+      <div class="dcard"><div class="dicon">⚡</div><div class="dname">Electrical &amp; Electronics</div><div class="ddesc">24×7 computing access, digital library resources, and industry-synced practical training programs.</div><div class="dtype">B.E · UG · 60 seats</div></div>
+      <div class="dcard"><div class="dicon">💻</div><div class="dname">Computer Science &amp; Engg</div><div class="ddesc">AI, ML, Data Science focused curriculum. M.E CSE postgraduate program with high-package industry placements.</div><div class="dtype">B.E + M.E · UG &amp; PG</div></div>
+      <div class="dcard"><div class="dicon">🌐</div><div class="dname">Information Technology</div><div class="ddesc">Cloud computing, AI, Big Data &amp; Cybersecurity. Preparing globally competitive IT professionals for the industry.</div><div class="dtype">B.Tech · UG · 60 seats</div></div>
+      <div class="dcard"><div class="dicon">🏗️</div><div class="dname">Civil Engineering</div><div class="ddesc">FEA, Structural Dynamics, STAAD Pro labs. M.E Structural Engineering PG program for advanced studies.</div><div class="dtype">B.E + M.E · UG &amp; PG</div></div>
+      <div class="dcard"><div class="dicon">🚗</div><div class="dname">Automobile Engineering</div><div class="ddesc">The founding discipline of IRTT. A proud legacy of automotive research and engineering innovation.</div><div class="dtype">B.E · UG · 60 seats</div></div>
+      <div class="dcard" style="border:1px solid rgba(201,162,39,.35);background:rgba(201,162,39,.04)"><div class="dicon">📊</div><div class="dname">CSE (Data Science)</div><div class="ddesc">Brand new program from 2025–26 academic year. 60-seat intake bridging AI with real-world data challenges.</div><div class="dtype" style="color:var(--gold)">B.E · New 2025–26</div></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ══════ FACILITIES ══════ -->
+<section id="facilities" class="section">
+  <div class="reveal">
+    <div class="stag">Facilities</div>
+    <h2 class="stitle">World-Class <em>Campus</em> Infrastructure</h2>
+    <p class="sbody" style="max-width:620px">A 200-acre green campus equipped with every modern amenity to nurture learning, research, sports, and holistic student development.</p>
+  </div>
+  <div class="fac-grid reveal">
+    <div class="fcard">
+      <div class="ficon">🔬</div>
+      <div class="ftitle">Laboratories</div>
+      <div class="fbody">State-of-the-art labs across all departments.</div>
+      <ul class="flist">
+        <li>CAD/CAM &amp; Mechatronics Labs</li>
+        <li>Innovative Product Development Centre (IPDC)</li>
+        <li>FEA &amp; STAAD Pro Structural Labs</li>
+        <li>Advanced ECE &amp; VLSI Labs</li>
+        <li>AI / ML Computing Labs</li>
+      </ul>
+    </div>
+    <div class="fcard">
+      <div class="ficon">📖</div>
+      <div class="ftitle">Library &amp; Digital Resources</div>
+      <div class="fbody">Rich academic library with digital access round the clock.</div>
+      <ul class="flist">
+        <li>Extensive print &amp; e-journal collection</li>
+        <li>24×7 digital library access</li>
+        <li>Online databases &amp; research portals</li>
+        <li>E-book &amp; NPTEL access</li>
+      </ul>
+    </div>
+    <div class="fcard">
+      <div class="ficon">🏠</div>
+      <div class="ftitle">Hostel Facilities</div>
+      <div class="fbody">Separate hostel blocks for boys and girls with all amenities.</div>
+      <ul class="flist">
+        <li>Boys &amp; Girls hostels on campus</li>
+        <li>Hygienic mess &amp; dining facilities</li>
+        <li>24-hour security &amp; surveillance</li>
+        <li>Wi-Fi enabled hostel premises</li>
+      </ul>
+    </div>
+    <div class="fcard">
+      <div class="ficon">🏟️</div>
+      <div class="ftitle">Sports &amp; Recreation</div>
+      <div class="fbody">Expansive sports facilities across the 200-acre campus.</div>
+      <ul class="flist">
+        <li>Cricket, Football &amp; Athletics grounds</li>
+        <li>Indoor sports &amp; gymnasium</li>
+        <li>Basketball &amp; Volleyball courts</li>
+        <li>NSS &amp; NCC programs</li>
+      </ul>
+    </div>
+    <div class="fcard">
+      <div class="ficon">🌐</div>
+      <div class="ftitle">IT Infrastructure</div>
+      <div class="fbody">High-speed internet and modern computing facilities.</div>
+      <ul class="flist">
+        <li>High-speed broadband internet campus-wide</li>
+        <li>Wi-Fi enabled classrooms &amp; labs</li>
+        <li>Smart classrooms with LCD projectors</li>
+        <li>ERP-based college management system</li>
+      </ul>
+    </div>
+    <div class="fcard">
+      <div class="ficon">🚌</div>
+      <div class="ftitle">Transport &amp; Location</div>
+      <div class="fbody">Well-connected campus with dedicated bus routes.</div>
+      <ul class="flist">
+        <li>15 km from Erode Railway Station (NH-47)</li>
+        <li>Between Chithode &amp; Bhavani</li>
+        <li>College bus routes to all major areas</li>
+        <li>Nearby banking &amp; ATM facilities</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ══════ PLACEMENT ══════ -->
+<section id="placement" class="section-full placement-bg">
+  <div class="section-full-inner">
+    <div class="reveal">
+      <div class="stag">Placement Cell</div>
+      <h2 class="stitle">Career &amp; <em>Placement</em></h2>
+      <p class="sbody" style="max-width:580px">Our dedicated placement cell bridges students with industry leaders, securing high-package roles at top national and multinational companies.</p>
+    </div>
+    <div class="place-grid reveal">
       <div>
-        <div class="section-tag">Academics</div>
-        <h2 class="section-title">Our <strong>Programs</strong></h2>
-      </div>
-      <a href="https://gcee.ac.in/admissionug.php" class="btn-outline">View Admissions →</a>
-    </div>
-    <div class="programs-grid">
-      <div class="prog-card reveal"><div class="prog-icon">🏗️</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Civil Engineering</div><div class="prog-intake">Intake: 24 students</div></div>
-      <div class="prog-card reveal"><div class="prog-icon">🚗</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Automobile Engineering</div><div class="prog-intake">Intake: 24 students</div></div>
-      <div class="prog-card reveal"><div class="prog-icon">⚙️</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Mechanical Engineering</div><div class="prog-intake">Est. 1984 · Core Branch</div></div>
-      <div class="prog-card reveal"><div class="prog-icon">⚡</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Electrical & Electronics Engineering</div><div class="prog-intake">Started 1994–95</div></div>
-      <div class="prog-card reveal"><div class="prog-icon">📡</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Electronics & Communication Engineering</div><div class="prog-intake">Started 1986–87</div></div>
-      <div class="prog-card reveal"><div class="prog-icon">💻</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Computer Science & Engineering</div><div class="prog-intake">Intake: 60 students</div></div>
-      <div class="prog-card reveal" style="background:rgba(201,168,76,0.05)"><div class="prog-icon">📊</div><div class="prog-type" style="color:var(--gold-light)">NEW · 2025–26 · B.E.</div><div class="prog-name">CSE (Data Science)</div><div class="prog-intake">Intake: 60 students</div></div>
-      <div class="prog-card reveal"><div class="prog-icon">🔌</div><div class="prog-type">UG · B.E.</div><div class="prog-name">Information Technology</div><div class="prog-intake">Started 2002–03</div></div>
-      <div class="prog-card reveal" style="background:rgba(26,58,107,0.35)"><div class="prog-icon">🎓</div><div class="prog-type">PG · M.E.</div><div class="prog-name">Computer Science & Engineering</div><div class="prog-intake">Postgraduate Program</div></div>
-      <div class="prog-card reveal" style="background:rgba(26,58,107,0.35)"><div class="prog-icon">🏛️</div><div class="prog-type">PG · M.E.</div><div class="prog-name">Structural Engineering</div><div class="prog-intake">Intake: 30 students</div></div>
-      <div class="prog-card reveal" style="grid-column:span 2; background:rgba(201,168,76,0.03)"><div class="prog-icon">🔬</div><div class="prog-type">Department</div><div class="prog-name">Science & Humanities</div><div class="prog-intake">Foundation courses — Mathematics, Physics, Chemistry, Languages for all disciplines</div></div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- VISION & MISSION -->
-  <section class="vision">
-    <div style="max-width:1200px;margin:0 auto;">
-      <div class="section-tag reveal">Our Purpose</div>
-      <h2 class="section-title reveal">Vision & <strong>Mission</strong></h2>
-    </div>
-    <div class="vision-inner">
-      <div class="vision-block reveal">
-        <span class="vision-icon">🔭</span>
-        <div class="vision-heading">Our Vision</div>
-        <p class="vision-text">Providing the impetus in young minds through value-based quality education and imparting sound knowledge, intellectual skills, good character and innovative ideas to develop potential leadership, professional excellence, and enlightened services to the global society.</p>
-      </div>
-      <div class="vision-block reveal">
-        <span class="vision-icon">🎯</span>
-        <div class="vision-heading">Our Mission</div>
-        <p class="vision-text">Government College of Engineering, Erode is committed to providing quality engineering education, fostering research and development, evolving innovative applications of technology, encouraging entrepreneurship, and moulding students with professional responsibility, social awareness — setting them on the path to leadership for the betterment of our nation.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- FACILITIES -->
-  <section class="facilities" id="facilities">
-    <div style="max-width:1200px;margin:0 auto;">
-      <div class="section-tag reveal">Campus Life</div>
-      <h2 class="section-title reveal">World-Class <strong>Facilities</strong></h2>
-    </div>
-    <div class="fac-grid">
-      <div class="fac-card reveal"><span class="fac-emoji">📚</span><div class="fac-title">Library</div><div class="fac-desc">Books, journals, and digital resources for academic excellence.</div></div>
-      <div class="fac-card reveal"><span class="fac-emoji">🏠</span><div class="fac-title">Hostels</div><div class="fac-desc">PG, Boys & Girls hostels with Wi-Fi and dining facilities.</div></div>
-      <div class="fac-card reveal"><span class="fac-emoji">🏟️</span><div class="fac-title">Auditorium</div><div class="fac-desc">Spacious hall for seminars, cultural events and conferences.</div></div>
-      <div class="fac-card reveal"><span class="fac-emoji">⚽</span><div class="fac-title">Sports</div><div class="fac-desc">Grounds, indoor games and dedicated athletics facilities.</div></div>
-      <div class="fac-card reveal"><span class="fac-emoji">🔬</span><div class="fac-title">Laboratories</div><div class="fac-desc">State-of-the-art labs across all engineering departments.</div></div>
-      <div class="fac-card reveal"><span class="fac-emoji">🚌</span><div class="fac-title">Transport</div><div class="fac-desc">Transport connecting Erode city and surrounding areas.</div></div>
-      <div class="fac-card reveal"><span class="fac-emoji">🍽️</span><div class="fac-title">Cafeteria</div><div class="fac-desc">Hygienic and affordable dining for students and staff.</div></div>
-      <div class="fac-card reveal"><span class="fac-emoji">🏥</span><div class="fac-title">Medical</div><div class="fac-desc">On-campus medical facilities for student healthcare.</div></div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- PRINCIPAL -->
-  <section class="principal-section">
-    <div style="text-align:center;margin-bottom:1rem;" class="reveal">
-      <div class="section-tag" style="justify-content:center;">Leadership</div>
-      <h2 class="section-title">From the <strong>Principal's Desk</strong></h2>
-    </div>
-    <div class="principal-inner">
-      <div class="reveal">
-        <div class="principal-photo-frame">
-          <img src="https://gcee.ac.in/assets/img/team/gcee_principal.jpg" alt="Dr. A. Saradha" onerror="this.style.display='none';" />
+        <div class="place-stats">
+          <div class="pstat"><div class="pnum">₹38.5L</div><div class="plbl">Highest Package</div></div>
+          <div class="pstat"><div class="pnum">95%+</div><div class="plbl">Placement Rate</div></div>
+          <div class="pstat"><div class="pnum">100+</div><div class="plbl">Companies Visit</div></div>
+          <div class="pstat"><div class="pnum">500+</div><div class="plbl">Annual Offers</div></div>
+        </div>
+        <div class="place-companies">
+          <h4>Our Top Recruiters</h4>
+          <div class="company-tags">
+            <div class="ctag">Cadence Design Systems</div>
+            <div class="ctag">TCS</div>
+            <div class="ctag">Infosys</div>
+            <div class="ctag">Wipro</div>
+            <div class="ctag">Sierra Support</div>
+            <div class="ctag">L&amp;T</div>
+            <div class="ctag">TAFE</div>
+            <div class="ctag">TVS Group</div>
+            <div class="ctag">Hyundai</div>
+            <div class="ctag">HCL Technologies</div>
+            <div class="ctag">Cognizant</div>
+            <div class="ctag">Tech Mahindra</div>
+            <div class="ctag">Robert Bosch</div>
+            <div class="ctag">Amazon</div>
+          </div>
         </div>
       </div>
-      <div class="reveal">
-        <div class="principal-role">Principal, GCEE (Formerly IRTT)</div>
-        <div class="principal-name">Dr. A. Saradha</div>
-        <p class="principal-msg">"Our institution stands as a beacon of technical excellence, dedicated to shaping engineers who will contribute meaningfully to society. With a 200-acre green campus and decades of legacy, we continue to provide the finest engineering education accessible to all."</p>
-        <div class="principal-details">
-          <div class="principal-det"><div class="principal-det-label">Qualification</div><div class="principal-det-val">M.E., Ph.D.</div></div>
-          <div class="principal-det"><div class="principal-det-label">Experience</div><div class="principal-det-val">34 Years</div></div>
-          <div class="principal-det"><div class="principal-det-label">Specialization</div><div class="principal-det-val">Semantic Web, Neural Networks</div></div>
-          <div class="principal-det"><div class="principal-det-label">Contact</div><div class="principal-det-val">+91 0424 2533579</div></div>
+      <div>
+        <div class="place-process">
+          <h4>Placement Process</h4>
+          <div class="pstep"><div class="pstep-num">01</div><div class="pstep-info"><h5>Pre-Placement Training</h5><p>Aptitude, communication and technical skill training for all final-year students.</p></div></div>
+          <div class="pstep"><div class="pstep-num">02</div><div class="pstep-info"><h5>Industry-Institute Partnership (IIP)</h5><p>On/off-campus courses on latest tech through active IIP Cell. In-plant training programs.</p></div></div>
+          <div class="pstep"><div class="pstep-num">03</div><div class="pstep-info"><h5>Campus Drives</h5><p>Regular on-campus recruitment drives with 100+ companies visiting every academic year.</p></div></div>
+          <div class="pstep"><div class="pstep-num">04</div><div class="pstep-info"><h5>Higher Studies Guidance</h5><p>Dedicated counselling for GATE, GRE, TOEFL and MBA entrance examinations.</p></div></div>
+          <div class="pstep"><div class="pstep-num">05</div><div class="pstep-info"><h5>Naan Mudhalvan</h5><p>Tamil Nadu Government's flagship skill development program integrated into the curriculum.</p></div></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+<div class="divider"></div>
 
-  <div class="divider"></div>
+<!-- ══════ COMMITTEES ══════ -->
+<section id="committees" class="section">
+  <div class="reveal">
+    <div class="stag">Committees</div>
+    <h2 class="stitle">Governing <em>Bodies</em> &amp; Cells</h2>
+    <p class="sbody" style="max-width:580px">Structured committees and student bodies ensure holistic development, institutional governance, and a vibrant campus culture.</p>
+  </div>
+  <div class="comm-grid reveal">
+    <div class="ccard"><div class="ccard-icon">⚖️</div><div class="ccard-title">Anti-Ragging Committee</div><div class="ccard-body">Ensures a safe, ragging-free campus environment. Provides confidential helpline and prompt action on complaints.</div></div>
+    <div class="ccard"><div class="ccard-icon">👩‍💼</div><div class="ccard-title">Internal Complaints Committee (ICC)</div><div class="ccard-body">Addresses gender-related grievances and ensures a safe, respectful workplace and learning environment for all.</div></div>
+    <div class="ccard"><div class="ccard-icon">🌱</div><div class="ccard-title">NSS — National Service Scheme</div><div class="ccard-body">Active NSS unit conducting community service, blood donation camps, cleanliness drives, and awareness programs.</div></div>
+    <div class="ccard"><div class="ccard-icon">🎖️</div><div class="ccard-title">NCC — National Cadet Corps</div><div class="ccard-body">NCC unit developing discipline, leadership and patriotism among students through military training activities.</div></div>
+    <div class="ccard"><div class="ccard-icon">🏆</div><div class="ccard-title">Sports Committee</div><div class="ccard-body">Organises inter-collegiate tournaments, annual sports day, and promotes fitness and team spirit across campus.</div></div>
+    <div class="ccard"><div class="ccard-icon">💡</div><div class="ccard-title">IPDC — Innovation Cell</div><div class="ccard-body">Innovative Product Development Centre promoting student entrepreneurship, patents, and prototype development.</div></div>
+    <div class="ccard"><div class="ccard-icon">📋</div><div class="ccard-title">IQAC — Internal Quality Assurance</div><div class="ccard-body">Monitors academic quality, faculty development, and institutional performance aligned with NAAC &amp; NBA standards.</div></div>
+    <div class="ccard"><div class="ccard-icon">🤝</div><div class="ccard-title">IIP Cell</div><div class="ccard-body">Industry-Institute Partnership Cell facilitating MoUs, guest lectures, internships, and industrial consultancy projects.</div></div>
+    <div class="ccard"><div class="ccard-icon">📣</div><div class="ccard-title">Student Council</div><div class="ccard-body">Elected student representatives managing cultural events, tech-fests, student welfare initiatives, and inter-college activities.</div></div>
+  </div>
+</section>
+<div class="divider"></div>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="contact-inner">
-      <div class="reveal">
-        <div class="section-tag">Get in Touch</div>
-        <h2 class="section-title" style="margin-bottom:2.5rem;">Contact <strong>Us</strong></h2>
-        <div class="contact-row">
-          <div class="contact-icon">📍</div>
-          <div><div class="contact-detail-label">Address</div><div class="contact-detail-val">Government College of Engineering (IRTT),<br>Chithode–Bhavani Road, Erode – 638 316,<br>Tamil Nadu, India</div></div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-icon">📞</div>
-          <div><div class="contact-detail-label">Phone Numbers</div><div class="contact-detail-val">Principal: 9280091825<br>Help Desk: 9280091826 | +91 0424 2533579<br>Admissions: 9280091827<br>Placement Cell: 9280091830<br>Exam Cell: 9280091829</div></div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-icon">✉️</div>
-          <div><div class="contact-detail-label">Email</div><div class="contact-detail-val">gceeprincipal@gmail.com</div></div>
+<!-- ══════ AICTE ══════ -->
+<section id="aicte" class="section-full aicte-bg">
+  <div class="section-full-inner">
+    <div class="reveal">
+      <div class="stag">AICTE</div>
+      <h2 class="stitle">AICTE <em>Approvals</em> &amp; Compliance</h2>
+      <p class="sbody" style="max-width:620px">Government College of Engineering, Erode is duly approved by the All India Council for Technical Education (AICTE), New Delhi — the statutory body for technical education in India.</p>
+    </div>
+    <div class="doc-grid reveal">
+      <div class="doc-card"><div class="doc-icon">📄</div><div class="doc-body"><h4>AICTE Approval Letter 2024–25</h4><p>Annual approval granted by AICTE, New Delhi confirming the institution's eligibility to offer approved UG and PG programs.</p><a href="#" class="doc-link">View Document →</a></div></div>
+      <div class="doc-card"><div class="doc-icon">🏫</div><div class="doc-body"><h4>Institution Details</h4><p>Permanent ID, Institute Code, and all regulatory information as registered with AICTE portal. All programs are AICTE approved.</p><a href="#" class="doc-link">AICTE Portal →</a></div></div>
+      <div class="doc-card"><div class="doc-icon">📋</div><div class="doc-body"><h4>Mandatory Disclosures</h4><p>Faculty details, infrastructure, financial statements, and all mandatory disclosures as required by AICTE regulations.</p><a href="#" class="doc-link">View Disclosures →</a></div></div>
+      <div class="doc-card"><div class="doc-icon">🔍</div><div class="doc-body"><h4>Grievance Redressal</h4><p>AICTE Grievance Portal registration and Student Grievance Redressal Committee details as per AICTE norms.</p><a href="#" class="doc-link">Grievance Portal →</a></div></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ══════ NIRF ══════ -->
+<section id="nirf" class="section">
+  <div class="reveal">
+    <div class="stag">NIRF Ranking</div>
+    <h2 class="stitle">National Institutional <em>Rankings</em></h2>
+    <p class="sbody" style="max-width:620px">The National Institutional Ranking Framework (NIRF) is the methodology adopted by the Ministry of Education, Government of India to rank institutions of higher education. GCE Erode participates in NIRF rankings across multiple categories.</p>
+  </div>
+  <div class="nirf-grid reveal">
+    <div class="nirf-card"><div class="nirf-cat">Engineering Category</div><div class="nirf-rank">Ranked</div><div class="nirf-desc">Participating in NIRF Engineering rankings. Annual submission of data covering Teaching-Learning &amp; Resources, Research, Graduation Outcomes, Outreach &amp; Inclusivity, and Perception.</div></div>
+    <div class="nirf-card"><div class="nirf-cat">NIRF Parameters</div><div class="nirf-rank">5 Pillars</div><div class="nirf-desc">Teaching-Learning &amp; Resources · Research &amp; Professional Practice · Graduation Outcomes · Outreach &amp; Inclusivity · Perception — all evaluated annually.</div></div>
+    <div class="nirf-card"><div class="nirf-cat">Transparency Portal</div><div class="nirf-rank">Open</div><div class="nirf-desc">All submitted NIRF data is publicly accessible on the official NIRF portal. GCE Erode is committed to transparency, accountability and continuous institutional improvement.</div></div>
+  </div>
+  <div style="margin-top:24px;background:var(--glass);border:1px solid var(--gb);padding:22px 28px;display:flex;align-items:center;gap:20px;" class="reveal">
+    <span style="font-size:28px">🔗</span>
+    <div>
+      <p style="font-size:13px;color:var(--cream);font-weight:500;margin-bottom:4px;">Official NIRF Data</p>
+      <p style="font-size:12px;color:var(--gray);">For the most current ranking data and detailed parameter scores, visit the official NIRF website at <span style="color:var(--gold)">nirfindia.org</span> and search for Government College of Engineering, Erode.</p>
+    </div>
+    <a href="#" class="btn-o" style="flex-shrink:0;font-size:11px;padding:10px 20px;">NIRF Portal →</a>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ══════ EXAM CELL ══════ -->
+<section id="examcell" class="section-full" style="background:linear-gradient(180deg,var(--navy) 0%,var(--deep) 100%);">
+  <div class="section-full-inner">
+    <div class="reveal">
+      <div class="stag">Exam Cell</div>
+      <h2 class="stitle">Examinations &amp; <em>Results</em></h2>
+      <p class="sbody" style="max-width:580px">The Examination Cell manages all aspects of internal and university examinations, results, certificates, and academic records for all students.</p>
+    </div>
+    <div class="exam-grid reveal">
+      <div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--cream);margin-bottom:20px;">Academic Calendar</h4>
+        <div class="timeline">
+          <div class="titem"><div class="tdot"></div><div class="tinfo"><h5>Odd Semester (July – November)</h5><p>Classes begin July. Internal Assessment Tests in September &amp; October. End-semester exams in November.</p></div></div>
+          <div class="titem"><div class="tdot"></div><div class="tinfo"><h5>Even Semester (January – May)</h5><p>Classes resume January. Internal tests in March &amp; April. End-semester university exams in May.</p></div></div>
+          <div class="titem"><div class="tdot"></div><div class="tinfo"><h5>Internal Assessment</h5><p>Two Cycle Tests per semester. Average of best performances. Minimum 75% attendance mandatory for exam eligibility.</p></div></div>
+          <div class="titem"><div class="tdot"></div><div class="tinfo"><h5>Anna University Exams</h5><p>Theory and practical examinations conducted as per Anna University, Chennai schedule and guidelines.</p></div></div>
+          <div class="titem"><div class="tdot"></div><div class="tinfo"><h5>Results &amp; Certificates</h5><p>Results declared on Anna University portal. Original degree certificates issued by Anna University, Chennai.</p></div></div>
         </div>
       </div>
-      <div class="reveal">
-        <div class="section-tag">Quick Access</div>
-        <h2 class="section-title" style="margin-bottom:1.5rem;">Important <strong>Links</strong></h2>
-        <div class="contact-links">
-          <a href="https://gcee.ac.in/AICTE/AICTE_2025-26.PDF" class="contact-link"><span>📄</span><span class="contact-link-label">AICTE</span><span>2025–26 Disclosure</span></a>
-          <a href="https://gcee.ac.in/NIRF/NIRF2024.pdf" class="contact-link"><span>🏆</span><span class="contact-link-label">NIRF</span><span>2024 Ranking Report</span></a>
-          <a href="https://examgcee.blogspot.com/" class="contact-link"><span>📝</span><span class="contact-link-label">Exam Cell</span><span>Results & Schedules</span></a>
-          <a href="https://gcee.ac.in/admissionug.php" class="contact-link"><span>🎓</span><span class="contact-link-label">UG Admissions</span><span>Apply for B.E. Programs</span></a>
-          <a href="https://gcee.ac.in/admissionpg.php" class="contact-link"><span>🎓</span><span class="contact-link-label">PG Admissions</span><span>Apply for M.E. Programs</span></a>
-          <a href="https://gcee.ac.in/placementstatistics.php" class="contact-link"><span>💼</span><span class="contact-link-label">Placements</span><span>Statistics & Recruiters</span></a>
-          <a href="https://gcee.ac.in/GCEE_Alumni_Donations.php" class="contact-link"><span>🤝</span><span class="contact-link-label">Alumni</span><span>GCEE Alumni Network</span></a>
-          <a href="https://gcee.ac.in/Google_Map.php" class="contact-link"><span>🗺️</span><span class="contact-link-label">Location</span><span>Get Directions — GCEE Campus</span></a>
+      <div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--cream);margin-bottom:20px;">Exam Cell Contacts</h4>
+        <div class="exam-contacts">
+          <div class="econ"><div class="econ-icon">📞</div><div><h5>Exam Cell</h5><p>+91 92800 91829</p></div></div>
+          <div class="econ"><div class="econ-icon">📞</div><div><h5>Help Desk</h5><p>+91 92800 91826 · 0424-2533579</p></div></div>
+          <div class="econ"><div class="econ-icon">✉️</div><div><h5>Email</h5><p>gceeprincipal@gmail.com</p></div></div>
+          <div class="econ"><div class="econ-icon">🕐</div><div><h5>Office Hours</h5><p>Monday – Friday: 9:00 AM – 5:00 PM</p></div></div>
+        </div>
+        <div style="margin-top:24px;background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.25);padding:20px 22px;">
+          <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Anna University Results Portal</p>
+          <p style="font-size:12px;color:var(--gray);line-height:1.6;">All official results are published at <span style="color:var(--gold)">coe1.annauniv.edu</span>. Students can check marks, arrear status and apply for revaluation through the portal.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+<div class="divider"></div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-brand">© 2025 Government College of Engineering, Erode (Formerly IRTT) · All Rights Reserved</div>
-    <div class="footer-links">
-      <a href="https://gcee.ac.in/Committees/Antiragging.pdf">Anti-Ragging</a>
-      <a href="http://www.antiragging.in/">Report Ragging — 1800-180-5522</a>
-      <a href="https://gcee.ac.in/contactus.php">Committees</a>
-      <a href="https://gcee.ac.in/HelpDesk.php">Help Desk</a>
+<!-- ══════ ALUMNI ══════ -->
+<section id="alumni" class="section-full alumni-bg">
+  <div class="section-full-inner">
+    <div class="reveal">
+      <div class="stag">Alumni</div>
+      <h2 class="stitle">Our <em>Distinguished</em> Alumni</h2>
+      <p class="sbody" style="max-width:580px">Thousands of GCE Erode alumni are making their mark across industries worldwide — from top MNCs and research labs to entrepreneurship and public service.</p>
     </div>
-  </footer>
+    <div class="alumni-grid reveal">
+      <div class="alcard">
+        <div class="al-avatar">ME</div>
+        <div class="al-name">Mechanical Engineering</div>
+        <div class="al-role">Batch of Engineers</div>
+        <div class="al-body">Alumni placed at TAFE, Hyundai, TVS, L&amp;T, Daimler and leading automobile &amp; manufacturing companies globally.</div>
+      </div>
+      <div class="alcard">
+        <div class="al-avatar">CS</div>
+        <div class="al-name">Computer Science</div>
+        <div class="al-role">Batch of Technologists</div>
+        <div class="al-body">Alumni at TCS, Infosys, Wipro, Cognizant, Amazon, Google and top product-based startups across India and abroad.</div>
+      </div>
+      <div class="alcard">
+        <div class="al-avatar">EC</div>
+        <div class="al-name">Electronics &amp; Communication</div>
+        <div class="al-role">Batch of Innovators</div>
+        <div class="al-body">Alumni at Cadence Design Systems, ISRO, DRDO, Qualcomm, Samsung and leading semiconductor &amp; defense companies.</div>
+      </div>
+      <div class="alcard">
+        <div class="al-avatar">CE</div>
+        <div class="al-name">Civil Engineering</div>
+        <div class="al-role">Batch of Builders</div>
+        <div class="al-body">Alumni in leading infrastructure companies, government departments, PWD, TNHB, and international construction firms.</div>
+      </div>
+      <div class="alcard">
+        <div class="al-avatar">EE</div>
+        <div class="al-name">Electrical &amp; Electronics</div>
+        <div class="al-role">Batch of Power Engineers</div>
+        <div class="al-body">Alumni at TNEB, BHEL, ABB, Siemens, and energy sector companies contributing to India's power infrastructure.</div>
+      </div>
+      <div class="alcard" style="background:rgba(201,162,39,.06);border-color:rgba(201,162,39,.3);">
+        <div class="al-avatar" style="border-color:var(--gold);">🎓</div>
+        <div class="al-name">Join the Alumni Network</div>
+        <div class="al-role">Stay Connected</div>
+        <div class="al-body">Register with the GCE Erode Alumni Association to network, mentor current students, and give back to your alma mater.</div>
+      </div>
+    </div>
+    <div class="alumni-cta reveal">
+      <p>Be part of our <em>growing alumni community</em> — 40 years of achievers, innovators &amp; leaders.</p>
+      <a href="#contact" class="btn-g"><span>Register as Alumni</span><span>→</span></a>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
 
-  <script>
-    // Scroll reveal
-    const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 55);
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    els.forEach(el => io.observe(el));
+<!-- quote -->
+<div class="quote-wrap">
+  <div class="qbg">"</div>
+  <span class="qmark">"</span>
+  <p class="qtext">Excellence is never accidental — it is the result of sincere effort, intelligent planning, and purposeful execution.</p>
+  <div class="qsrc">GCE Erode · Academic Philosophy</div>
+</div>
 
-    // Navbar compact on scroll
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('navbar');
-      nav.style.padding = window.scrollY > 60 ? '0.75rem 4rem' : '1.2rem 4rem';
+<!-- ══════ CONTACT US ══════ -->
+<section id="contact" class="section">
+  <div class="contact-grid reveal">
+    <div>
+      <div class="stag">Contact Us</div>
+      <h2 class="stitle">Connect with <em>GCE</em> Erode</h2>
+      <div class="cinfo-item"><div class="cicon">📍</div><div class="cdetail"><h4>Address</h4><p>Government College of Engineering (IRTT)<br>Erode – 638 316, Tamil Nadu, India<br>Between Chithode &amp; Bhavani, NH-47</p></div></div>
+      <div class="cinfo-item"><div class="cicon">👤</div><div class="cdetail"><h4>Principal</h4><p>+91 92800 91825</p></div></div>
+      <div class="cinfo-item"><div class="cicon">📞</div><div class="cdetail"><h4>Help Desk</h4><p>+91 92800 91826<br>0424-2533579</p></div></div>
+      <div class="cinfo-item"><div class="cicon">🎓</div><div class="cdetail"><h4>Admissions</h4><p>+91 92800 91827</p></div></div>
+      <div class="cinfo-item"><div class="cicon">💰</div><div class="cdetail"><h4>Accounts</h4><p>+91 92800 91828</p></div></div>
+      <div class="cinfo-item"><div class="cicon">📝</div><div class="cdetail"><h4>Exam Cell</h4><p>+91 92800 91829</p></div></div>
+      <div class="cinfo-item"><div class="cicon">💼</div><div class="cdetail"><h4>Placement Cell</h4><p>+91 92800 91830</p></div></div>
+      <div class="cinfo-item"><div class="cicon">✉️</div><div class="cdetail"><h4>Email</h4><p>gceeprincipal@gmail.com</p></div></div>
+    </div>
+    <div>
+      <div class="stag">Enquiry Form</div>
+      <h3 class="stitle" style="font-size:clamp(26px,2.6vw,40px);margin-bottom:28px">Send us a <em>Message</em></h3>
+      <div class="cform">
+        <div class="frow">
+          <div class="fg"><label>Full Name</label><input type="text" placeholder="Your full name"></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Phone</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+          <div class="fg"><label>Department Interest</label>
+            <select>
+              <option>Select department</option>
+              <option>Mechanical Engineering</option>
+              <option>Electronics &amp; Communication</option>
+              <option>Electrical &amp; Electronics</option>
+              <option>Computer Science &amp; Engineering</option>
+              <option>Information Technology</option>
+              <option>Civil Engineering</option>
+              <option>Automobile Engineering</option>
+              <option>CSE (Data Science)</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Subject</label>
+          <select>
+            <option>Select topic</option>
+            <option>Admissions Enquiry</option>
+            <option>Placement Information</option>
+            <option>Exam / Results</option>
+            <option>Alumni Registration</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="fg"><label>Message</label><textarea rows="4" placeholder="Your message..."></textarea></div>
+        <button class="btn-g" type="button" style="align-self:flex-start;border:none;"><span>Submit Enquiry</span><span>→</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="flogo">GCE <span>Erode</span></div>
+      <p class="fdesc">Government College of Engineering (IRTT), Erode — a premier institution of technical excellence since 1984, affiliated to Anna University, Chennai.</p>
+    </div>
+    <div class="fcol">
+      <h5>Academics</h5>
+      <ul>
+        <li><a href="#academics">UG Programs</a></li>
+        <li><a href="#academics">PG Programs</a></li>
+        <li><a href="#academics">PhD Programs</a></li>
+        <li><a href="#academics">Departments</a></li>
+        <li><a href="#examcell">Academic Calendar</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h5>Campus</h5>
+      <ul>
+        <li><a href="#facilities">Library</a></li>
+        <li><a href="#facilities">Laboratories</a></li>
+        <li><a href="#facilities">IPDC Centre</a></li>
+        <li><a href="#facilities">Hostel</a></li>
+        <li><a href="#facilities">Sports</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#placement">Placements</a></li>
+        <li><a href="#nirf">NIRF</a></li>
+        <li><a href="#aicte">AICTE</a></li>
+        <li><a href="#alumni">Alumni</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2025 Government College of Engineering, Erode (IRTT). All rights reserved.</p>
+    <p>Crafted with <span>♥</span> for academic excellence</p>
+  </div>
+</footer>
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Nav scroll & active link
+const navbar = document.getElementById('navbar');
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-links-bar a');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  document.getElementById('scrollTop').classList.toggle('vis', window.scrollY > 400);
+
+  // Active link highlighting
+  let current = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 130) current = sec.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// Smooth scroll offset for fixed nav (~104px)
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    const offset = navbar.offsetHeight + 8;
+    window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+  });
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('vis'), i * 70); }
+  });
+}, { threshold: 0.06 });
+reveals.forEach(r => ro.observe(r));
+
+// Counter animation
+function animCount(el, target, sfx) {
+  let start = null;
+  const dur = 1600;
+  const step = ts => {
+    if (!start) start = ts;
+    const prog = Math.min((ts - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - prog, 3);
+    el.textContent = Math.floor(ease * target) + sfx;
+    if (prog < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const sg = document.querySelector('.stats-grid');
+let counted = false;
+new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !counted) {
+    counted = true;
+    document.querySelectorAll('.snum').forEach(el => {
+      animCount(el, parseInt(el.dataset.target), el.dataset.sfx || '');
     });
-  </script>
+  }
+}, { threshold: 0.3 }).observe(sg);
+</script>
 </body>
 </html>
